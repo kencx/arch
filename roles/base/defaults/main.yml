@@ -1,0 +1,12 @@
+---
+base_packages:
+  - base-devel
+  - vim
+  - neovim
+  - git
+  - tmux
+  - curl
+  - wget
+  - python
+  - logrotate
+  - dosfstools

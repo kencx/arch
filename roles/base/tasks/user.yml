@@ -1,0 +1,30 @@
+---
+- name: Install sudo
+  pacman:
+    name: sudo
+    state: present
+
+- name: Create wheel group
+  group:
+    name: wheel
+    state: present
+
+- name: Ensure user created
+  user:
+    name: kenc
+    shell: /bin/bash
+    groups: wheel
+    append: true
+    create_home: true
+    password: "{{ password | password_hash('sha512') }}"
+    # update_password: on_create
+    state: present
+
+- name: Copy sudoers file
+  template:
+    src: sudo_wheel.j2
+    dest: /etc/sudoers.d/01_wheel
+    owner: root
+    group: root
+    mode: 0440
+    validate: 'visudo -cf %s'

@@ -1,0 +1,21 @@
+---
+- name: Install base packages
+  pacman:
+    name: "{{ base_packages }}"
+    state: present
+
+- name: Install bash
+  pacman:
+    name:
+      - bash
+      - bash-completion
+    state: present
+
+- name: Install zsh
+  pacman:
+    name:
+      - zsh
+      - zsh-completions
+    state: present
+
+- import_tasks: user.yml
