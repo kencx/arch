@@ -1,7 +1,17 @@
 ---
-- hosts: localhost
+- hosts: all
   become: true
+  vars:
+    user: user
+    password: password
   roles:
     - base
     - networking
     - security
+
+    - role: audio
+      tags: ['audio']
+    - role: bluetooth
+      tags: ['bluetooth']
+    - role: gui
+      tags: ['gui']

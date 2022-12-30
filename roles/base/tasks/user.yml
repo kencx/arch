@@ -9,15 +9,26 @@
     name: wheel
     state: present
 
-- name: Ensure user created
+- name: Create user .ssh directory
+  file:
+    path: "/home/{{ user }}/.ssh"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0700
+    state: directory
+
+- name: Create user
   user:
-    name: kenc
+    name: "{{ user }}"
     shell: /bin/bash
     groups: wheel
     append: true
     create_home: true
     password: "{{ password | password_hash('sha512') }}"
-    # update_password: on_create
+    update_password: on_create
+    generate_ssh_key: true
+    ssh_key_type: ed25519
+    ssh_key_file: .ssh/id_ed25519
     state: present
 
 - name: Copy sudoers file

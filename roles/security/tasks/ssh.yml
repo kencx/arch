@@ -1,0 +1,25 @@
+---
+- name: Install openssh
+  pacman:
+    name: openssh
+    state: present
+
+# required for validation
+- name: Create /run/sshd
+  file:
+    path: "/run/sshd"
+    owner: root
+    group: root
+    mode: 0755
+    state: directory
+
+- name: Update sshd configuration
+  template:
+    src: ../templates/sshd_config.j2
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: '0600'
+    validate: 'sshd -t -f %s'
+    backup: true
+  notify: restart ssh

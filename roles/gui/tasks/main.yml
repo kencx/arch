@@ -1,0 +1,65 @@
+---
+- name: Install Xorg
+  pacman:
+    name:
+      - xorg-server
+      - xorg-xinit
+      - xterm
+    state: present
+
+- name: Install required video drivers
+  pacman:
+    name: "{{ gui_video_driver }}"
+    state: present
+
+- name: Add user to video group
+  user:
+    name: "{{ user }}"
+    groups: video
+    append: true
+
+- name: Install window manager
+  pacman:
+    name:
+      - bspwm
+      - sxhkd
+    state: present
+
+- name: Copy .xinitrc template
+  copy:
+    src: xinitrc
+    dest: .xinitrc
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0755
+
+- name: Copy .bash_profile template to autostart X at login
+  copy:
+    src: bash_profile
+    dest: .bash_profile
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0644
+
+- name: Create bspwm and sxhkd $XDG_CONFIG_HOME directories
+  file:
+    path: "/home/{{ user }}/.config/{{ item }}"
+    owner: kenc
+    group: kenc
+    mode: 0755
+    state: directory
+  with_items:
+    - bspwm
+    - sxhkd
+
+- name: Copy default bspwmrc and sxhkdrc
+  copy:
+    src: "/usr/share/doc/bspwm/examples/{{ item.src }}"
+    dest: "/home/{{ user }}/.config/{{ item.dest }}"
+    remote_src: true
+    force: false
+  with_items:
+    - src: bspwmrc
+      dest: bspwm/bspwmrc
+    - src: sxhkdrc
+      dest: sxhkd/sxhkdrc

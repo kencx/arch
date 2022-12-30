@@ -1,0 +1,30 @@
+---
+- name: Enable systemd-networkd
+  service:
+    name: systemd-networkd
+    state: started
+    enabled: true
+
+- name: Enable systemd-resolved
+  service:
+    name: systemd-resolved
+    state: started
+    enabled: true
+
+- name: Enable iwd
+  service:
+    name: iwd
+    state: started
+    enabled: true
+
+- name: Copy network configuration
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/systemd/network/{{ item }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart systemd-networkd
+  with_items:
+    - 20-wired.network
+    - 25-wireless.network

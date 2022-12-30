@@ -1,0 +1,34 @@
+---
+- name: Install pipewire and related support packages
+  pacman:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - pipewire
+    - pipewire-pulse
+    - pipewire-alsa
+    - pipewire-jack
+
+- name: Enable pipewire user service
+  become: true
+  become_user: "{{ user }}"
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: true
+    scope: user
+  with_items:
+    - pipewire
+    - pipewire-pulse
+
+# - name: Install wireplumber
+#   pacman:
+#     name: wireplumber
+#     state: present
+#
+# - name: Enable wireplumber user service
+#   systemd:
+#     name: wireplumber
+#     state: started
+#     enabled: true
+#     scope: user

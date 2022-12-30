@@ -1,0 +1,30 @@
+---
+- name: Install nftables
+  pacman:
+    name:
+      - nftables
+      - iptables-nft
+    state: present
+
+- name: Install ufw
+  pacman:
+    name: ufw
+    state: present
+
+- name: Enable and configure ufw incoming/outgoing rules
+  ufw:
+    direction: "{{ item.direction }}"
+    policy: "{{ item.policy }}"
+    state: enabled
+  with_items:
+    - {direction: outgoing, policy: allow}
+    - {direction: incoming, policy: deny}
+
+- name: Configure ufw ports
+  ufw:
+    rule: "{{ item.rule }}"
+    port: "{{ item.port }}"
+    proto: "{{ item.proto }}"
+    comment: "{{ item.comment | default('') }}"
+  with_items: "{{ ufw_default_rules + ufw_rules }}"
+  notify: restart ufw

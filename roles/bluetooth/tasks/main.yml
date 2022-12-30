@@ -1,0 +1,25 @@
+---
+- name: Install bluez[-utils]
+  pacman:
+    name:
+      - bluez
+      - bluez-utils
+    state: present
+
+- name: Unblock the bluetooth device
+  systemd:
+    name: rfkill-block@blueooth
+    state: stopped
+    enabled: false
+
+- name: Start and enable bluetooth.service
+  systemd:
+    name: bluetooth
+    state: started
+    enabled: true
+
+- name: Add user to lp group
+  user:
+    name: "{{ user }}"
+    groups: lp
+    append: true
