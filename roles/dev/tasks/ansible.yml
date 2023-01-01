@@ -1,0 +1,26 @@
+---
+- name: Install Ansible core
+  pacman:
+    name:
+      - ansible-core
+    state: present
+
+- name: Install Ansible extras
+  pacman:
+    name:
+      - ansible
+      - ansible-lint
+    state: present
+  tags: ansible-extras
+
+# TODO
+# - name: Copy default ansible.cfg
+
+- name: Install molecule
+  pacman:
+    name:
+      - molecule
+      - molecule-docker
+      - molecule-vagrant
+    state: present
+  tags: molecule

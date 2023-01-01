@@ -63,3 +63,6 @@
       dest: bspwm/bspwmrc
     - src: sxhkdrc
       dest: sxhkd/sxhkdrc
+
+- import_tasks: multi_monitor.yml
+  tags: multi-monitor

@@ -1,0 +1,32 @@
+---
+- name: Install Docker
+  pacman:
+    name:
+      - docker
+      - docker-compose
+      - docker-buildx
+
+- name: Add user to docker group
+  user:
+    name: "{{ user }}"
+    groups: docker
+    append: true
+
+- name: Copy docker daemon.json
+  copy:
+    src: daemon.json
+    dest: /etc/docker/daemon.json
+    owner: "root"
+    group: "root"
+    mode: 0644
+
+- name: Start and enable Docker
+  systemd:
+    name: docker
+    state: started
+    enabled: true
+
+# TODO install dive from aur
+
+# test user can run docker info
+# test docker info storage-driver is overlay2

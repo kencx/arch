@@ -1,0 +1,12 @@
+---
+- name: Install networking tools
+  pacman:
+    name:
+      - gping
+      # - whois
+      # - netcat
+      # - nmap
+      # - tcpdump
+      # - wireshark
+      # - speedtest-cli
+    state: present

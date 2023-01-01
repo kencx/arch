@@ -3,6 +3,7 @@
   pacman:
     name: "{{ base_packages }}"
     state: present
+    update_cache: true
 
 - name: Install bash
   pacman:

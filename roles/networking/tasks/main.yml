@@ -28,3 +28,6 @@
   with_items:
     - 20-wired.network
     - 25-wireless.network
+
+- import_tasks: tools.yml
+  tags: networking-tools

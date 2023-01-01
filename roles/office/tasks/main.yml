@@ -1,0 +1,31 @@
+---
+- name: Install libreoffice
+  pacman:
+    name:
+      - libreoffice
+    state: present
+  csv: libreoffice
+
+- name: Install libqalculate
+  pacman:
+    name: libqalculate
+    state: present
+
+- name: Install xsv
+  pacman:
+    name: xsv
+  state: present
+  tags: xsv
+
+- name: Install zathura
+  pacman:
+    name:
+      - zathura
+    state: present
+
+- name: Install zathura epub support
+  pacman:
+    name:
+      - zathura-pdf-mupdf
+    state: present
+  tags: zathura-extras

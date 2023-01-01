@@ -15,3 +15,16 @@
       tags: ['bluetooth']
     - role: gui
       tags: ['gui']
+    - role: laptop
+      tags: ['laptop']
+    - role: dev
+      tags: ['dev']
+    - role: play
+    - role: office
+      tags: ['office']
+    - role: print
+      tags: ['print']
+    - role: ricing
+      tags: ['ricing']
+    - role: disk
+      tags: ['disk']

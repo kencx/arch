@@ -2,7 +2,6 @@
 base_packages:
   - base-devel
   - vim
-  - neovim
   - git
   - tmux
   - curl
@@ -10,5 +9,10 @@ base_packages:
   - python
   - logrotate
   - dosfstools
+  - fzf
+  - fd
+  - ripgrep
+  - zoxide
+  - bat
 
 password: changeme

@@ -1,0 +1,39 @@
+---
+# power
+- name: Install acpi
+  pacman:
+    name: acpi
+    state: present
+
+# battery monitoring, icon and notif
+# hibernate/suspend
+
+# brightness
+- name: Install xbacklight
+  pacman:
+    name: xorg-xbacklight
+    state: present
+
+# brightness hotkeys
+
+# touchpad
+- name: Install libinput
+  pacman:
+    name:
+      - libinput
+      - xf86-input-libinput
+    state: present
+
+- name: Copy touchpad.conf
+  copy:
+    src: 30-touchpad.conf
+    dest: /etc/X11/xorg.conf.d/30-touchpad.conf
+    owner: root
+    group: root
+    mode: 0644
+
+# webcam device
+- name: Install v4l2-ctl
+  pacman:
+    name: v4l2-ctl
+    state: present

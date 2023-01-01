@@ -1,0 +1,7 @@
+---
+- name: Install autorandr
+  pacman:
+    name: autorandr
+    state: present
+
+# setup multi-monitor config for bspwm

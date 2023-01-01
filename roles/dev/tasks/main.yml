@@ -1,0 +1,53 @@
+---
+
+- name: Install Go and tools
+  pacman:
+    name:
+      - go
+      - go-tools
+      - gopls
+    state: present
+  tags: golang
+
+- name: Install Python and tools
+  pacman:
+    name:
+      - python
+      - python-pipx
+      # - python-virtualenv
+    state: present
+
+- name: Install rustup
+  pacman:
+    name:
+      - rustup
+    state: present
+  tags: rustup
+
+- name: Install linters
+  pacman:
+    name:
+      - shellcheck
+      - yamllint
+      - stylua
+    state: present
+  tags: linters
+
+- name: Install other tools
+  pacman:
+    name:
+      - jq
+      - direnv
+      - sops
+      - age
+      - hugo
+    state: present
+
+- import_tasks: docker.yml
+  tags: docker
+
+- import_tasks: ansible.yml
+  tags: ansible
+
+- import_tasks: hashicorp.yml
+  tags: hashicorp
