@@ -12,27 +12,6 @@
 
 - import_tasks: fonts.yml
 - import_tasks: eww.yml
-
-- name: Install stow
-  pacman:
-    name: stow
-    state: present
-
-- name: Clone dotfiles
-  git:
-    repo: "{{ dotfiles_url }}"
-    dest: /home/"{{ user }}"/dotfiles
-    version: HEAD
-    accept_hostkey: true
-
-# TODO use module
-- name: stow dotfiles
-  command:
-    cmd: make stow
-    chdir: "/home/{{ user }}/dotfiles"
-
-# check for failure
-
 - import_tasks: firefox.yml
   tags: firefox
 - import_tasks: neovim.yml

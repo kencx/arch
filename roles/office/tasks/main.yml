@@ -2,7 +2,7 @@
 - name: Install libreoffice
   pacman:
     name:
-      - libreoffice
+      - libreoffice-still
     state: present
   csv: libreoffice
 
@@ -29,3 +29,10 @@
       - zathura-pdf-mupdf
     state: present
   tags: zathura-extras
+
+- name: Install Obsidian
+  pacman:
+    name:
+      - obisidian
+    state: present
+  tags: obisidian

@@ -1,12 +1,5 @@
 ---
-# power
-- name: Install acpi
-  pacman:
-    name: acpi
-    state: present
-
-# battery monitoring, icon and notif
-# hibernate/suspend
+- import_tasks: power.yml
 
 # brightness
 - name: Install xbacklight

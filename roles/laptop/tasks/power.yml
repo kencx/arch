@@ -1,0 +1,8 @@
+---
+- name: Install acpi
+  pacman:
+    name: acpi
+    state: present
+
+# battery monitoring, icon and notif
+# hibernate/suspend
