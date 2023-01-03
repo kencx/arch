@@ -3,8 +3,40 @@
   pacman:
     name:
       - nftables
-      - iptables-nft
     state: present
+  register: nftables
+
+# necessary to force remove iptables due to
+# iptables dependency in systemd
+- name: Install iptables-nft
+  shell: "yes | pacman -S iptables-nft"
+  when: nftables is changed
+
+- name: Remove iptables
+  pacman:
+    name: iptables
+    state: absent
+
+- name: Add nftables.service
+  template:
+    src: nftables.service.j2
+    dest: /etc/systemd/system/nftables.service
+    owner: root
+    group: root
+    mode: 0644
+  notify: reload nftables
+
+# TODO replace docker iptables rules with nftables
+# TODO bind fail2ban to nftables
+
+- name: Start nftables
+  systemd:
+    name: "{{ item }}"
+    state: started
+    enabled: true
+  with_items:
+    - nftables
+    - iptables
 
 - name: Install ufw
   pacman:
