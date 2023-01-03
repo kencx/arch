@@ -11,6 +11,11 @@
     state: started
     enabled: true
 
+- name: Install iwd
+  pacman:
+    name: iwd
+    state: present
+
 - name: Enable iwd
   service:
     name: iwd

@@ -4,5 +4,5 @@
     name: acpi
     state: present
 
-# battery monitoring, icon and notif
+# TODO battery monitoring, icon and notif
 # hibernate/suspend

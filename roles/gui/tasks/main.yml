@@ -41,6 +41,8 @@
     group: "{{ user }}"
     mode: 0644
 
+# only run if not ricing
+# otherwise, stow will fail later
 - name: Create bspwm and sxhkd $XDG_CONFIG_HOME directories
   file:
     path: "/home/{{ user }}/.config/{{ item }}"
@@ -51,6 +53,7 @@
   with_items:
     - bspwm
     - sxhkd
+  when: "'ricing' not in ansible_run_tags"
 
 - name: Copy default bspwmrc and sxhkdrc
   copy:
@@ -63,6 +66,7 @@
       dest: bspwm/bspwmrc
     - src: sxhkdrc
       dest: sxhkd/sxhkdrc
+  when: "'ricing' not in ansible_run_tags"
 
 - import_tasks: multi_monitor.yml
   tags: multi-monitor

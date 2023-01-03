@@ -13,6 +13,7 @@
   pacman:
     name:
       - python
+      - python-pip
       - python-pipx
       # - python-virtualenv
     state: present
