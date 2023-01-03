@@ -49,14 +49,7 @@
     mode: 0700
     state: directory
 
-- name: Set XDG_RUNTIME_DIR env variable permanently
-  lineinfile:
-    path: "/home/{{ user }}/.bashrc"
-    line: export XDG_RUNTIME_DIR=/run/user/{{ user_output.uid }}
-    state: present
-
 - name: Start user systemd instance
   systemd:
     name: user@{{ user_output.uid }}
     state: started
-

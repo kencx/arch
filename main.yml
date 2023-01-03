@@ -4,6 +4,30 @@
   vars:
     user: user
     password: password
+
+  pre_tasks:
+    - name: Check if system is virtual
+      lineinfile:
+        path: /sys/devices/virtual/dmi/id/sys_vendor
+        line: QEMU
+        state: present
+      check_mode: true
+      register: virtual
+      failed_when: (virtual is failed) or (virtual is changed)
+      ignore_errors: true
+
+    - name: Platform is physical
+      set_fact:
+        physical: true
+        virtual: false
+      when: virtual is changed
+
+    - name: Platform is virtual
+      set_fact:
+        physical: false
+        virtual: true
+      when: virtual
+
   roles:
     - base
     - networking
@@ -11,20 +35,32 @@
 
     - role: audio
       tags: ['audio']
+
     - role: bluetooth
+      when: physical
       tags: ['bluetooth']
+
     - role: gui
       tags: ['gui']
+
     - role: laptop
+      when: physical
       tags: ['laptop']
+
     - role: dev
       tags: ['dev']
     - role: play
+      tags: ['play']
     - role: office
       tags: ['office']
+
     - role: print
+      when: physical
       tags: ['print']
+
     - role: ricing
       tags: ['ricing']
+
     - role: disk
+      when: physical
       tags: ['disk']
