@@ -9,14 +9,6 @@
     name: wheel
     state: present
 
-- name: Create user .ssh directory
-  file:
-    path: "/home/{{ user }}/.ssh"
-    owner: "{{ user }}"
-    group: "{{ user }}"
-    mode: 0700
-    state: directory
-
 - name: Create user
   user:
     name: "{{ user }}"
@@ -30,6 +22,7 @@
     ssh_key_type: ed25519
     ssh_key_file: .ssh/id_ed25519
     state: present
+  register: user_output
 
 - name: Copy sudoers file
   template:
@@ -39,3 +32,31 @@
     group: root
     mode: 0440
     validate: 'visudo -cf %s'
+
+- name: Create user .ssh directory
+  file:
+    path: "/home/{{ user }}/.ssh"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0700
+    state: directory
+
+- name: Create user socket directory
+  file:
+    path: "/run/user/{{ user_output.uid }}"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0700
+    state: directory
+
+- name: Set XDG_RUNTIME_DIR env variable permanently
+  lineinfile:
+    path: "/home/{{ user }}/.bashrc"
+    line: export XDG_RUNTIME_DIR=/run/user/{{ user_output.uid }}
+    state: present
+
+- name: Start user systemd instance
+  systemd:
+    name: user@{{ user_output.uid }}
+    state: started
+
