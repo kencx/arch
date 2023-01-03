@@ -1,0 +1,30 @@
+---
+- name: Verify
+  hosts: all
+  vars:
+    user: user
+  tasks:
+    - name: Ensure services started
+      service:
+        name: "{{ item }}"
+        state: started
+        enabled: true
+      with_items:
+        - systemd-networkd
+        - systemd-resolved
+        - sshd
+        - nftables
+
+    - name: Ensure user services started
+      become: true
+      become_user: "{{ user }}"
+      systemd:
+        name: "{{ item }}"
+        state: started
+        scope: user
+      with_items:
+        - pipewire
+        - pipewire-pulse
+
+# test user can run docker info
+# test docker info storage-driver is overlay2

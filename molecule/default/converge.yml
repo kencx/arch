@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+  tasks:
+    - name: Update cache
+      pacman:
+        update_cache: true
+      changed_when: false
+
+- import_playbook: ../../main.yml

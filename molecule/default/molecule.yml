@@ -1,0 +1,23 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+  provider:
+    name: libvirt
+platforms:
+  - name: arch
+    box: "archlinux/archlinux"
+    config_options:
+      synced_folder: false
+
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_ROLES_PATH: "../../roles"
+    ASIBLE_STDOUT_CALLBACK: yaml
+verifier:
+  name: ansible
+# lint: |
+#   set -e
+#   ansible-lint .
