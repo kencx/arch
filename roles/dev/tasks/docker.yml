@@ -27,6 +27,3 @@
     enabled: true
 
 # TODO install dive from aur
-
-# test user can run docker info
-# test docker info storage-driver is overlay2

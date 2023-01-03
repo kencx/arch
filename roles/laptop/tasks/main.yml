@@ -1,6 +1,8 @@
 ---
 - import_tasks: power.yml
 
+# TODO close lid
+
 # brightness
 - name: Install xbacklight
   pacman:
