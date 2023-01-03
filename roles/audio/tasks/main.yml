@@ -9,9 +9,22 @@
     - pipewire-alsa
     - pipewire-jack
 
+- name: Get UID of {{ user }}
+  command: "id -u {{ user }}"
+  changed_when: false
+  check_mode: false
+  register: uid
+
+- name: Populate XDG_RUNTIME_DIR
+  set_fact:
+    xdg_runtime_dir: "/run/user/{{ uid.stdout }}"
+  changed_when: false
+
 - name: Enable pipewire user service
   become: true
   become_user: "{{ user }}"
+  environment:
+    XDG_RUNTIME_DIR: "{{ xdg_runtime_dir }}"
   systemd:
     name: "{{ item }}"
     state: started
