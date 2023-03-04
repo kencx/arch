@@ -16,6 +16,7 @@
       - python-pip
       - python-pipx
       # - python-virtualenv
+      # - python-pre-commit
     state: present
 
 - name: Install rustup

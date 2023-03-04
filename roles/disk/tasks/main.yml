@@ -1,0 +1,9 @@
+---
+- name: Install udisks2
+  pacman:
+    name:
+      - udisks2
+      - udiskie
+    state: present
+
+# TODO setup disks automounter
