@@ -1,10 +1,12 @@
 ---
+# TODO install noto-fonts for universal font coverage
+
 - name: Install libreoffice
   pacman:
     name:
       - libreoffice-still
     state: present
-  csv: libreoffice
+  tags: libreoffice
 
 - name: Install libqalculate
   pacman:
@@ -33,6 +35,6 @@
 - name: Install Obsidian
   pacman:
     name:
-      - obisidian
+      - obsidian
     state: present
-  tags: obisidian
+  tags: obsidian

@@ -1,26 +1,18 @@
 ---
-- name: Enable systemd-networkd
-  service:
-    name: systemd-networkd
-    state: started
-    enabled: true
-
-- name: Enable systemd-resolved
-  service:
-    name: systemd-resolved
-    state: started
-    enabled: true
-
 - name: Install iwd
   pacman:
     name: iwd
     state: present
 
-- name: Enable iwd
+- name: Enable systemd-networkd
   service:
-    name: iwd
+    name: "{{ item }}"
     state: started
     enabled: true
+  with_items:
+    - systemd-networkd
+    - systemd-resolved
+    - iwd
 
 - name: Copy network configuration
   template:

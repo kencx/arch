@@ -1,5 +1,5 @@
 ---
-- name: Install pipewire and related support packages
+- name: Install pipewire and support packages
   pacman:
     name: "{{ item }}"
     state: present
@@ -15,8 +15,7 @@
   check_mode: false
   register: uid
 
-- name: Populate XDG_RUNTIME_DIR
-  set_fact:
+- set_fact:
     xdg_runtime_dir: "/run/user/{{ uid.stdout }}"
   changed_when: false
 

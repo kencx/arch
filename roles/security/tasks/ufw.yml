@@ -6,7 +6,7 @@
     state: present
   register: nftables
 
-# necessary to force remove iptables due to
+# shell command is necessary to force remove iptables due to
 # iptables dependency in systemd
 - name: Install iptables-nft
   shell: "yes | pacman -S iptables-nft"

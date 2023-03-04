@@ -1,5 +1,4 @@
 ---
-
 - name: Install rice packages
   pacman:
     name:
@@ -12,6 +11,7 @@
 
 - import_tasks: fonts.yml
 - import_tasks: eww.yml
+- import_tasks: dotfiles.yml
 - import_tasks: firefox.yml
   tags: firefox
 - import_tasks: neovim.yml
