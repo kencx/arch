@@ -19,6 +19,8 @@
     owner: "root"
     group: "root"
     mode: 0644
+    validate: "dockerd --validate --config-file=%s"
+  notify: restart docker
 
 - name: Start and enable Docker
   systemd:
