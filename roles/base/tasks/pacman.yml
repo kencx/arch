@@ -1,0 +1,13 @@
+---
+# pacman.conf
+# enable parallel downloads
+
+# mirror management
+# reflector
+
+# cache management
+# paccache.timer
+
+# pacman hooks
+# orphan detection
+# update list of installed packages
