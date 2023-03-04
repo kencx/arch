@@ -20,7 +20,7 @@
       set_fact:
         physical: true
         virtual: false
-      when: virtual is changed
+      when: virtual is failed
 
     - name: Platform is virtual
       set_fact:

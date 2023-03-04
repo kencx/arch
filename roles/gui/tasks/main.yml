@@ -7,6 +7,8 @@
       - xterm
     state: present
 
+# TODO determine video driver: intel, amd, nvidia
+
 - name: Install required video drivers
   pacman:
     name: "{{ gui_video_driver }}"
@@ -28,7 +30,7 @@
 - name: Copy .xinitrc template
   copy:
     src: xinitrc
-    dest: .xinitrc
+    dest: "/home/{{ user }}/.xinitrc"
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: 0755
@@ -36,7 +38,7 @@
 - name: Copy .bash_profile template to autostart X at login
   copy:
     src: bash_profile
-    dest: .bash_profile
+    dest: "/home/{{ user }}/.bash_profile"
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: 0644

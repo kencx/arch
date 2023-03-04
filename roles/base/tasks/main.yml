@@ -23,6 +23,16 @@
 - import_tasks: pacman.yml
 - import_tasks: boot.yml
 
+- name: Install man pages
+  pacman:
+    name:
+      - man-db
+      - man-pages
+    state: present
+
+- name: Run mandb
+  command: mandb
+
 - name: Create journald.conf.d
   file:
     path: /etc/systemd/journald.conf.d
@@ -39,3 +49,9 @@
     group: root
     mode: 0755
   notify: restart systemd-journald
+
+- name: Enable fstrim.timer
+  systemd:
+    name: fstrim.timer
+    state: started
+    enabled: true

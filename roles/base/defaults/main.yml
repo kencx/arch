@@ -14,5 +14,5 @@ base_packages:
   - ripgrep
   - zoxide
   - bat
-
+shell: /bin/bash
 password: changeme

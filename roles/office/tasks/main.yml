@@ -16,7 +16,7 @@
 - name: Install xsv
   pacman:
     name: xsv
-  state: present
+    state: present
   tags: xsv
 
 - name: Install zathura

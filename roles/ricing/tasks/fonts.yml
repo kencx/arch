@@ -1,2 +1,7 @@
 ---
-# TODO install fira code nerd font from aur
+- name: Install fonts
+  pacman:
+    name: ttf-firacode-nerd
+    state: present
+
+# TODO fontconfig

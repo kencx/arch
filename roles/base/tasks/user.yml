@@ -12,7 +12,7 @@
 - name: Create user
   user:
     name: "{{ user }}"
-    shell: /bin/bash
+    shell: "{{ shell }}"
     groups: wheel
     append: true
     create_home: true

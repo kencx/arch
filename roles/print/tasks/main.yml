@@ -2,6 +2,6 @@
 - name: Install cups
   pacman:
     name: cups
-  state: present
+    state: present
 
 # TODO setup printer

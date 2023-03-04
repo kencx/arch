@@ -13,6 +13,12 @@
     mode: 0755
     state: directory
 
+- name: Start sshd
+  systemd:
+    name: sshd
+    state: started
+    enabled: true
+
 - name: Update sshd configuration
   template:
     src: ../templates/sshd_config.j2
