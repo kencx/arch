@@ -1,2 +1,62 @@
 ---
-# - name: Rice firefox
+- name: Check Firefox profile exists
+  lineinfile:
+    path: "$HOME/.mozilla/firefox/profiles.ini"
+    line: "Name=default"
+    state: present
+  check_mode: true
+  register: grep_profile
+  failed_when: grep_profile is changed
+
+- name: Create profile
+  shell: firefox -no-remote -CreateProfile default 2>&1
+  register: create_profile
+  changed_when: grep_profile.rc > 0
+
+- set_fact:
+    firefox_profile: "{{ create_profile.stdout | regex_replace(\"Success: created profile '(.+)' at '(.+)'\", \"\\2\") | dirname }}"
+
+- name: Install user.js
+  template:
+    src: "/home/{{ user }}/dotfiles/etc/firefox/user.js"
+    dest: "{{ firefox_profile }}/user.js"
+    remote_src: true
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0644
+
+- name: Install custom style
+  copy:
+    src: "/home/{{ user }}/dotfiles/etc/firefox/chrome/{{ item }}"
+    dest: '{{ firefox_profile }}/chrome/{{ item }}'
+    remote_src: true
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0644
+  with_items:
+    - userChrome.css
+    - userContent.css
+
+- name: Install custom startpage
+  git:
+    repo: "{{ startpage_url }}"
+    dest: "{{ startpage_dest }}"
+    version: HEAD
+    accept_hostkey: true
+
+- name: Add custom startpage path to user.js
+  lineinfile:
+    line: "{{ item }}"
+    path: "{{ firefox_profile }}/user.js"
+    state: present
+  with_items:
+    - user_pref("browser.startup.page", 3);
+    - user_pref("browser.startup.homepage", "{{ startpage_dest }}/index.html");
+
+# - name: Install user addons
+#   firefox_addon:
+#     url: '{{ item.url }}'
+#     profile: '{{ firefox_profile }}'
+#   with_items: '{{ firefox.addons | default([]) | select("defined") | list }}'
+#
+# - name: Install user addon prefs
