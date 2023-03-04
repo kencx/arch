@@ -1,0 +1,21 @@
+# TODO
+- configure pacman.conf
+- refresh pacman mirrors
+  - install inetutils?
+- set hostname
+
+- set kernel parameters
+- install microcode
+  - rebuild grub
+
+## Package management
+- create pacman hook dir
+- create aur directory
+- install aur base packages
+- configure pacman cache cleanup service and timer
+
+## Security
+- linux-hardened
+
+## tools
+- menyoki, libgen-cli, hugo, gotop, redshift, kdeconnect
