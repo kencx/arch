@@ -1,13 +1,70 @@
 ---
-# pacman.conf
-# enable parallel downloads
+# pacman configuration
+- name: Enable pacman parallel downloads
+  lineinfile:
+    path: /etc/pacman.conf
+    regexp: '^#ParallelDownloads'
+    line: ParallelDownloads = 5
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Create hooks dir
+  file:
+    path: /etc/pacman.d/hooks/
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
 
 # mirror management
-# reflector
+- name: Install reflector
+  pacman:
+    name: reflector
+    state: present
+
+- name: Copy reflector.conf
+  copy:
+    src: reflector.conf
+    dest: /etc/xdg/reflector/reflector.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Enable reflector.timer
+  systemd:
+    name: reflector.timer
+    state: started
+    enabled: true
 
 # cache management
-# paccache.timer
+- name: Install paccache
+  pacman:
+    name: pacman-contrib
+    state: present
 
-# pacman hooks
+- name: Copy paccache.hook
+  copy:
+    src: paccache.hook
+    dest: /etc/pacman.d/hooks/paccache.hook
+    owner: root
+    group: root
+    mode: 0644
+
 # orphan detection
+- name: Copy check_orphan.hook
+  copy:
+    src: check_orphan.hook
+    dest: /etc/pacman.d/hooks/check_orphan.hook
+    owner: root
+    group: root
+    mode: 0644
+
 # update list of installed packages
+- name: Copy installed_list.hook
+  copy:
+    src: installed_list.hook
+    dest: /etc/pacman.d/hooks/installed_list.hook
+    owner: root
+    group: root
+    mode: 0644

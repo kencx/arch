@@ -1,7 +1,5 @@
 # TODO
-- configure pacman.conf
-- refresh pacman mirrors
-  - install inetutils?
+- install inetutils?
 - set hostname
 
 - set kernel parameters
@@ -9,10 +7,8 @@
   - rebuild grub
 
 ## Package management
-- create pacman hook dir
 - create aur directory
 - install aur base packages
-- configure pacman cache cleanup service and timer
 
 ## Security
 - linux-hardened

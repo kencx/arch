@@ -1,7 +1,0 @@
----
-- name: Install fonts
-  pacman:
-    name: ttf-firacode-nerd
-    state: present
-
-# TODO fontconfig

@@ -1,6 +1,7 @@
 ---
 base_packages:
   - base-devel
+  - btrfs-progs
   - vim
   - git
   - tmux
@@ -9,6 +10,7 @@ base_packages:
   - python
   - logrotate
   - dosfstools
+  - gocryptfs
   - fzf
   - fd
   - ripgrep

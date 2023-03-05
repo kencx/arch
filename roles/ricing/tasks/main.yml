@@ -9,7 +9,13 @@
       # - slock
     state: present
 
-- import_tasks: fonts.yml
+- name: Install fonts
+  pacman:
+    name:
+      - ttf-firacode-nerd
+      - noto-fonts
+    state: present
+
 - import_tasks: eww.yml
 - import_tasks: dotfiles.yml
 - import_tasks: firefox.yml

@@ -1,0 +1,17 @@
+- name: Create journald.conf.d
+  file:
+    path: /etc/systemd/journald.conf.d
+    owner: root
+    group: root
+    mode: 0755
+    state: directory
+
+- name: Copy journald.conf
+  copy:
+    src: journald.conf
+    dest: /etc/systemd/journald.conf.d/storage.conf
+    owner: root
+    group: root
+    mode: 0755
+  notify: restart systemd-journald
+

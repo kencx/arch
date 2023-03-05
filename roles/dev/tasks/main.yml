@@ -32,6 +32,8 @@
       - shellcheck
       - yamllint
       - stylua
+      - luacheck
+      - codespell
     state: present
   tags: linters
 
