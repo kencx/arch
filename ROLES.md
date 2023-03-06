@@ -27,6 +27,7 @@
 - hashicorp
 - linters
 - molecule
+- qemu
 - rustup
 
 #### office

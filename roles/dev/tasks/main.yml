@@ -15,7 +15,7 @@
       - python
       - python-pip
       - python-pipx
-      # - python-virtualenv
+      - python-virtualenv
       # - python-pre-commit
     state: present
 
@@ -49,6 +49,9 @@
 
 - import_tasks: docker.yml
   tags: docker
+
+- import_tasks: qemu.yml
+  tags: qemu
 
 - import_tasks: ansible.yml
   tags: ansible

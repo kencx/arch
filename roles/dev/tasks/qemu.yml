@@ -1,0 +1,32 @@
+---
+- name: Install qemu (full)
+  pacman:
+    name: qemu-full
+    state: present
+
+- name: Install libvirt and dependencies
+  pacman:
+    name:
+      - libvirt
+      - dnsmasq
+      - dmidecode
+      - bridge-utils
+      - openbsd-netcat
+    state: present
+
+- name: Add user to libvirt group
+  user:
+    name: "{{ user }}"
+    groups: libvirt
+    append: true
+
+# - name: Start libvirtd
+#   systemd:
+#     name: libvirtd
+#     state: started
+#     enabled: true
+
+- name: Install virt-manager
+  pacman:
+    name: virt-manager
+    state: present
