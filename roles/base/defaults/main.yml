@@ -7,6 +7,7 @@ base_packages:
   - tmux
   - curl
   - wget
+  - bc
   - python
   - logrotate
   - dosfstools
@@ -16,5 +17,6 @@ base_packages:
   - ripgrep
   - zoxide
   - bat
+  - ncdu
 shell: /bin/bash
 password: changeme

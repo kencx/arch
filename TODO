@@ -1,10 +1,6 @@
 - install inetutils?
 - set hostname
 
-- set kernel parameters
-- install microcode
-  - rebuild grub
-
 ## Package management
 - create aur directory
 - install aur base packages
@@ -13,4 +9,4 @@
 - linux-hardened
 
 ## tools
-- menyoki, libgen-cli, gotop, kdeconnect
+- menyoki, libgen-cli, gotop

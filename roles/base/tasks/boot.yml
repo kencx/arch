@@ -2,4 +2,26 @@
 
 # TODO set up bootloader/grub
 # install linux-lts
-# nvidia pacman hook
+# set kernel parameters
+
+- set_fact:
+    vendor: intel
+  when:
+    - ansible_processor is defined
+    - "'Intel' in ansible_processor | join(' ')"
+
+- set_fact:
+    vendor: amd
+  when:
+    - ansible_processor is defined
+    - "'AMD' in ansible_processor | join(' ')"
+
+- name: Install microcode
+  pacman:
+    name: "{{ vendor }}-ucode"
+    state: present
+  when:
+    - vendor is defined
+    - physical
+
+# TODO rebuild grub

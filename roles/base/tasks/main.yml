@@ -31,9 +31,6 @@
       - man-pages
     state: present
 
-- name: Run mandb
-  command: mandb
-
 - name: Enable fstrim.timer
   systemd:
     name: fstrim.timer

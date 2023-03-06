@@ -13,7 +13,7 @@
     state: present
   tags: ansible-extras
 
-# TODO
+# TODO ansible.cfg
 # - name: Copy default ansible.cfg
 
 - name: Install molecule
