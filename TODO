@@ -1,4 +1,3 @@
-# TODO
 - install inetutils?
 - set hostname
 
@@ -14,4 +13,4 @@
 - linux-hardened
 
 ## tools
-- menyoki, libgen-cli, hugo, gotop, redshift, kdeconnect
+- menyoki, libgen-cli, gotop, kdeconnect

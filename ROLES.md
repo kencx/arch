@@ -3,33 +3,37 @@
 ## Tags
 - audio
 - bluetooth
+- disk
+- dev
 - gui
 - laptop
-- dev
-- play
 - office
+- play
 - print
 - ricing
-- disk
 
 #### networking
 - networking-tools
 
+#### gui
+- redshift
+- multi-monitor
+
 #### dev
-- golang
-- rustup
-- linters
-- docker
 - ansible
 - ansible-extras
-- molecule
+- docker
+- golang
 - hashicorp
+- linters
+- molecule
+- rustup
 
 #### office
 - libreoffice
+- obsidian
 - xsv
 - zathura-extras
-- obsidian
 
 #### play
 - firefox

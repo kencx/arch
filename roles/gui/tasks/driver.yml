@@ -1,0 +1,14 @@
+---
+- name: Install required video drivers
+  pacman:
+    name: "{{ gui_video_driver }}"
+    state: present
+
+- name: Copy nvidia.hook
+  copy:
+    src: nvidia.hook
+    dest: /etc/pacman.d/hooks/nvidia.hook
+    owner: root
+    group: root
+    mode: 0644
+  when: '"nvidia" in gui_video_driver'
