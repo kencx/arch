@@ -1,6 +1,4 @@
 ---
-# TODO install noto-fonts for universal font coverage
-
 - name: Install libreoffice
   pacman:
     name:
@@ -21,20 +19,18 @@
 
 - name: Install zathura
   pacman:
-    name:
-      - zathura
+    name: zathura
     state: present
 
 - name: Install zathura epub support
   pacman:
-    name:
-      - zathura-pdf-mupdf
+    name: zathura-pdf-mupdf
+    reason: dependency
     state: present
   tags: zathura-extras
 
 - name: Install Obsidian
   pacman:
-    name:
-      - obsidian
+    name: obsidian
     state: present
   tags: obsidian

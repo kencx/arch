@@ -1,6 +1,6 @@
 # arch
 
-An opinionated Ansible playbook for automating the installation and configuration of an
+Ansible playbook for automating the installation and configuration of an
 Arch Linux system.
 
 The playbook should be run locally after a fresh install or remotely, if
@@ -8,7 +8,7 @@ networking and SSH has already been setup. Ensure that all variables have been
 appropriately set before running the playbook. You may also choose to skip
 certain tasks/roles via the use of tags.
 
-## Setup
+## Prerequisites
 Run `prepare.sh` to install a base Arch Linux system on a chosen disk. It requires the
 following dependencies:
 
@@ -60,6 +60,12 @@ Base configuration (only base, networking and security):
 
 ```bash
 $ ansible-playbook main.yml --tags="untagged"
+```
+
+See [ROLES](ROLES.md) for all tags or use `list-tags`:
+
+```bash
+$ ansible-playbook main.yml --list-tags
 ```
 
 ## References

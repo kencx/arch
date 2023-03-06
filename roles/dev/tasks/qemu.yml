@@ -1,17 +1,22 @@
 ---
-- name: Install qemu (full)
+- name: Install qemu
   pacman:
-    name: qemu-full
+    name: qemu-desktop
     state: present
 
-- name: Install libvirt and dependencies
+- name: Install libvirt
+  pacman:
+    name: libvirt
+    state: present
+
+- name: Install libvirt dependencies
   pacman:
     name:
-      - libvirt
       - dnsmasq
       - dmidecode
       - bridge-utils
       - openbsd-netcat
+    reason: dependency
     state: present
 
 - name: Add user to libvirt group

@@ -13,10 +13,16 @@
   pacman:
     name:
       - python
-      - python-pip
       - python-pipx
       - python-virtualenv
       # - python-pre-commit
+    state: present
+
+- name: Install Python dependencies
+  pacman:
+    name:
+      - python-pip
+    reason: dependency
     state: present
 
 - name: Install rustup

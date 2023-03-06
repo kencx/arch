@@ -18,5 +18,7 @@ base_packages:
   - zoxide
   - bat
   - ncdu
+  - xclip
+  - xdotool
 shell: /bin/bash
 password: changeme

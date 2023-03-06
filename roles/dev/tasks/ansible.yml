@@ -22,5 +22,6 @@
       - molecule
       - molecule-docker
       - molecule-vagrant
+    reason: dependency
     state: present
   tags: molecule

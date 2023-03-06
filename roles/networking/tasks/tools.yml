@@ -3,10 +3,10 @@
   pacman:
     name:
       - gping
+      - speedtest-cli
       # - whois
       # - netcat
       # - nmap
       # - tcpdump
       # - wireshark
-      # - speedtest-cli
     state: present
