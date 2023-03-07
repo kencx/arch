@@ -1,7 +1,7 @@
 # arch
 
 Ansible playbook for automating the installation and configuration of an
-Arch Linux system.
+Arch Linux workstation/laptop.
 
 The playbook should be run locally after a fresh install or remotely, if
 networking and SSH has already been setup. Ensure that all variables have been

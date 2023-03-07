@@ -9,4 +9,5 @@
       # - nmap
       # - tcpdump
       # - wireshark
+      # - inetutils
     state: present
