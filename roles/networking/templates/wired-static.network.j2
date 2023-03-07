@@ -1,0 +1,15 @@
+[Match]
+Name=en*
+
+[Network]
+Address={{ network_ip_addr }}
+Gateway={{ network_gw }}
+DNS={{ network_dns }}
+
+{% if network_routes is defined and network_routes|length > 0 %}
+{% for route in network_routes %}
+[Route]
+Gateway={{ route.gw }}
+Destination={{ route.dest }}
+{% endfor %}
+{% endif %}

@@ -1,5 +1,7 @@
 
-- name: restart systemd-networkd
+- name: restart networking
   service:
-    name: systemd-networkd
+    name:
+      - systemd-networkd
+      - systemd-resolved
     state: restarted

@@ -1,0 +1,17 @@
+[Match]
+Name=wl*
+
+[Network]
+DHCP=yes
+IgnoreCarrierLoss=3s
+
+[DHCPv4]
+RouteMetric=20
+
+{% if network_routes is defined and network_routes|length > 0 %}
+{% for route in network_routes %}
+[Route]
+Gateway={{ route.gw }}
+Destination={{ route.dest }}
+{% endfor %}
+{% endif %}

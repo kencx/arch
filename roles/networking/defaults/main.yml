@@ -1,0 +1,6 @@
+---
+network_static_ip: false
+network_ip_addr: ""
+network_gw: ""
+network_dns: ""
+network_routes: []

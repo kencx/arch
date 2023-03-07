@@ -14,17 +14,40 @@
     - systemd-resolved
     - iwd
 
-- name: Copy network configuration
+- name: Copy DHCP network configuration
   template:
     src: "{{ item }}.j2"
-    dest: "/etc/systemd/network/{{ item }}"
+    dest: "/etc/systemd/network/20-{{ item }}"
     owner: root
     group: root
     mode: 0644
-  notify: restart systemd-networkd
+  notify: restart networking
   with_items:
-    - 20-wired.network
-    - 25-wireless.network
+    - wired-dhcp.network
+    - wireless-dhcp.network
+  when: not network_static_ip
+
+# TODO wired and wireless cannot have same ip
+- name: Copy static network configuration
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/systemd/network/20-{{ item }}"
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - wired-static.network
+    - wireless-static.network
+  notify: restart networking
+  when: network_static_ip
+
+- name: Symlink stub resolver
+  file:
+    src: /run/systemd/resolve/stub-resolv.conf
+    dest: /etc/resolv.conf
+    owner: systemd-resolve
+    group: systemd-resolve
+    state: link
 
 - import_tasks: tools.yml
   tags: networking-tools
