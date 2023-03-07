@@ -9,6 +9,15 @@
     group: root
     mode: 0644
 
+- name: Enable pacman color
+  lineinfile:
+    path: /etc/pacman.conf
+    regexp: '^#Color'
+    line: Color
+    owner: root
+    group: root
+    mode: 0644
+
 - name: Create hooks dir
   file:
     path: /etc/pacman.d/hooks/
