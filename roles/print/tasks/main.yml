@@ -4,4 +4,22 @@
     name: cups
     state: present
 
-# TODO setup printer
+# Socket based activation only
+- name: Enable cups.socket
+  systemd:
+    name: cups.socket
+    state: started
+    enabled: true
+
+- name: Disable cups.service
+  systemd:
+    name: cups.service
+    state: stopped
+    enabled: false
+
+- name: Install printer driver
+  kewlfft.aur.aur:
+    name: "{{ print_driver }}"
+    use: makepkg
+    state: present
+  when: print_driver != ""

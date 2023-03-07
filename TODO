@@ -1,12 +1,5 @@
 - install inetutils?
 - set hostname
 
-## Package management
-- create aur directory
-- install aur base packages
-
 ## Security
 - linux-hardened
-
-## tools
-- menyoki, libgen-cli, gotop

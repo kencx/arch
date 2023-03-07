@@ -1,12 +1,8 @@
 ---
-- name: Install mpd
+- name: Install music packages
   pacman:
     name:
       - mpd
-    state: present
-
-- name: Install ncmpcpp
-  pacman:
-    name:
       - ncmpcpp
+      - playerctl
     state: present

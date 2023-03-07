@@ -1,0 +1,23 @@
+---
+- name: Enable multilib repository
+  replace:
+    path: /etc/pacman.conf
+    regexp: '#\[multilib\]\n#(Include = /etc/pacman.d/mirrorlist)'
+    replace: '[multilib]\n\1'
+    backup: true
+
+# See https://wiki.archlinux.org/title/Steam#Installation
+- name: Install steam
+  pacman:
+    name: steam
+    state: present
+
+- name: Install steam dependencies
+  pacman:
+    name:
+      - nvidia-utils
+      - lib32-systemd
+    reason: dependency
+    state: present
+
+# TODO install proton from aur

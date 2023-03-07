@@ -37,6 +37,7 @@
 - zathura-extras
 
 #### play
+- discord
 - firefox
 - steam
 

@@ -10,18 +10,17 @@
 
 - name: Install telegram
   pacman:
-    name:
-      - telegram-desktop
+    name: telegram-desktop
     state: present
 
-- name: Install steam
+- name: Install discord
   pacman:
-    name:
-      - steam
+    name: discord
     state: present
-  tags: steam
-
-# TODO install proton from aur
+  tags: discord
 
 - import_tasks: music.yml
   tags: music
+
+- import_tasks: steam.yml
+  tags: steam
