@@ -26,3 +26,7 @@ password: changeme
 base_timezone: Asia/Singapore
 base_locale: "en_US.UTF-8"
 base_hostname: "arch"
+base_fonts:
+  - noto-fonts
+  - noto-fonts-emoji
+  - ttf-liberation

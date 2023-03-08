@@ -1,4 +1,5 @@
 ---
 user: "arch"
+ricing_nerd_font: "ttf-firacode-nerd"
 startpage_url: "https://github.com/kencx/startpage"
 startpage_dest: "/home/{{ user }}/.mozilla/startpage"

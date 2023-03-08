@@ -51,8 +51,14 @@
       - man-pages
     state: present
 
+- name: Install fonts
+  pacman:
+    name: "{{ base_fonts }}"
+    state: present
+
 - name: Enable fstrim.timer
   systemd:
     name: fstrim.timer
     state: started
     enabled: true
+

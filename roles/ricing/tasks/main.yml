@@ -9,11 +9,9 @@
       # - slock
     state: present
 
-- name: Install fonts
+- name: Install Nerd Font
   pacman:
-    name:
-      - ttf-firacode-nerd
-      - noto-fonts
+    name: "{{ ricing_nerd_font }}"
     state: present
 
 - import_tasks: eww.yml
