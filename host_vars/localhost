@@ -1,0 +1,12 @@
+user: kenc
+password: changeme
+shell: /bin/zsh
+network_static_ip: true
+network_ip_addr: "192.168.86.82/24"
+network_gw: "192.168.86.1"
+network_dns: "192.168.86.49"
+network_routes:
+  - gw: "192.168.86.6"
+    dest: "10.10.10.0/24"
+gui_video_driver: nvidia
+print_driver: brother-hl1210w
