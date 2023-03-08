@@ -1,8 +1,6 @@
 ---
 
 # TODO set up bootloader/grub
-# install linux-lts
-# set kernel parameters
 
 - set_fact:
     vendor: intel
@@ -23,5 +21,17 @@
   when:
     - vendor is defined
     - physical
+  # notify: rebuild grub
 
-# TODO rebuild grub
+- name: Install backup kernel
+  pacman:
+    name: linux-lts
+    state: present
+  # notify: rebuild grub
+
+- name: Set top level menu entry
+  lineinfile:
+    path: /etc/default/grub
+    line: 'GRUB_TOP_LEVEL=/boot/vmlinuz-linux'
+    state: present
+  # notify: rebuild grub
