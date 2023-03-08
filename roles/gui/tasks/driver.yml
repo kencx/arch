@@ -3,6 +3,7 @@
   pacman:
     name: "{{ gui_video_driver }}"
     state: present
+  notify: regenerate initramfs
 
 - name: Copy nvidia.hook
   copy:

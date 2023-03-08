@@ -1,4 +1,6 @@
 ---
+- import_tasks: pacman.yml
+
 - name: Install base packages
   pacman:
     name: "{{ base_packages }}"
@@ -19,8 +21,26 @@
       - zsh-completions
     state: present
 
+- name: Set timezone
+  timezone:
+    name: "{{ base_timezone }}"
+  register: tz
+
+- name: Sync time to hwclock
+  ansible.builtin.command: hwclock --systohc
+  when: tz is changed
+
+- name: Set locale
+  locale_gen:
+    name: "{{ base_locale }}"
+    state: present
+
+- name: Set hostname
+  hostname:
+    name: "{{ base_hostname }}"
+
 - import_tasks: user.yml
-- import_tasks: pacman.yml
+- import_tasks: aur.yml
 - import_tasks: boot.yml
 - import_tasks: journald.yml
 

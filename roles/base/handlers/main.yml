@@ -3,3 +3,6 @@
   systemd:
     name: systemd-journald
     state: restarted
+
+- name: update arch repo mirrors
+  command: reflector @/etc/xdg/reflector/reflector.conf

@@ -39,6 +39,7 @@
     owner: root
     group: root
     mode: 0644
+  notify: update arch repo mirrors
 
 - name: Enable reflector.timer
   systemd:

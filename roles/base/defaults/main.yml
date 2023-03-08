@@ -20,5 +20,9 @@ base_packages:
   - ncdu
   - xclip
   - xdotool
+
 shell: /bin/bash
 password: changeme
+base_timezone: Asia/Singapore
+base_locale: "en_US.UTF-8"
+base_hostname: "arch"

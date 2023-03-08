@@ -1,12 +1,9 @@
 ---
-- name: Install qemu
+- name: Install qemu and libvirt
   pacman:
-    name: qemu-desktop
-    state: present
-
-- name: Install libvirt
-  pacman:
-    name: libvirt
+    name:
+      - qemu-desktop
+      - libvirt
     state: present
 
 - name: Install libvirt dependencies
@@ -25,11 +22,11 @@
     groups: libvirt
     append: true
 
-# - name: Start libvirtd
-#   systemd:
-#     name: libvirtd
-#     state: started
-#     enabled: true
+- name: Start libvirtd
+  systemd:
+    name: libvirtd
+    state: started
+    enabled: true
 
 - name: Install virt-manager
   pacman:
