@@ -20,6 +20,7 @@ base_packages:
   - ncdu
   - xclip
   - xdotool
+  - scrot
 
 shell: /bin/bash
 password: changeme

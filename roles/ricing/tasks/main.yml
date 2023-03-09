@@ -5,8 +5,6 @@
       - rofi
       - dunst
       # - picom
-      # - starship
-      # - slock
     state: present
 
 - name: Install Nerd Font
@@ -14,9 +12,37 @@
     name: "{{ ricing_nerd_font }}"
     state: present
 
+# - name: Install pure zsh prompt from AUR
+
 - import_tasks: eww.yml
 - import_tasks: dotfiles.yml
 - import_tasks: firefox.yml
   tags: firefox
 - import_tasks: neovim.yml
   tags: neovim
+
+- set_fact:
+    xdg_runtime_dir: "/run/user/{{ uid.stdout }}"
+  changed_when: false
+
+- name: Start redshift user service
+  become: true
+  become_user: "{{ user }}"
+  environment:
+    XDG_RUNTIME_DIR: "{{ xdg_runtime_dir }}"
+  systemd:
+    name: redshift
+    state: started
+    enabled: true
+    scope: user
+
+- name: Start dunst user service
+  become: true
+  become_user: "{{ user }}"
+  environment:
+    XDG_RUNTIME_DIR: "{{ xdg_runtime_dir }}"
+  systemd:
+    name: dunst
+    state: started
+    enabled: true
+    scope: user
