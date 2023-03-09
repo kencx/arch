@@ -55,6 +55,11 @@ do
     mount -v -o "${MOUNT_OPTS},subvol=@${i}" "${TARGET_DEVICE}2" "${ROOT_MOUNT}/${i}"
 done
 
+# temp fix to change subvolume /var to /var/log
+umount -v "${ROOT_MOUNT}/var"
+mkdir -pv "${ROOT_MOUNT}/var/log"
+mount -v -o "${MOUNT_OPTS},subvol=@var" "${TARGET_DEVICE}2" "${ROOT_MOUNT}/var/log"
+
 # mount boot partition
 echo "Mounting boot partition"
 mkdir -pv "${BOOT_MOUNT}"
