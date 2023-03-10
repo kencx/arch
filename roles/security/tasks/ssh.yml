@@ -4,6 +4,11 @@
     name: openssh
     state: present
 
+- name: Install keychain
+  pacman:
+    name: keychain
+    state: present
+
 # required for validation
 - name: Create /run/sshd
   file:

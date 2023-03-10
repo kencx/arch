@@ -48,6 +48,7 @@
     owner: systemd-resolve
     group: systemd-resolve
     state: link
+    force: true
 
 - import_tasks: tools.yml
   tags: networking-tools

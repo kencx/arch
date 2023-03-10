@@ -21,23 +21,26 @@
       register: virtual
       failed_when: (virtual is failed) or (virtual is changed)
       ignore_errors: true
+      tags: always
 
     - name: Platform is physical
       set_fact:
         physical: true
         virtual: false
       when: virtual is failed
+      tags: always
 
     - name: Platform is virtual
       set_fact:
         physical: false
         virtual: true
       when: virtual
+      tags: always
 
   roles:
-    - base
-    - networking
-    - security
+    - role: base
+    - role: networking
+    - role: security
 
     - role: audio
       tags: ['audio']

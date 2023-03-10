@@ -31,6 +31,8 @@
     group: "{{ user }}"
     mode: 0755
 
+# this is only relevant if the user's default shell is /bin/bash
+# other shells must add their own startup files via custom dotfiles
 - name: Copy .bash_profile template to autostart X at login
   copy:
     src: bash_profile

@@ -62,6 +62,12 @@ Base configuration (only base, networking and security):
 $ ansible-playbook main.yml --tags="untagged"
 ```
 
+Pick and choose:
+
+```bash
+$ ansible-playbook main.yml --tags="untagged,dev" --skip-tags="qemu"
+```
+
 See [ROLES](ROLES.md) for all tags or use `list-tags`:
 
 ```bash

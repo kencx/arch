@@ -4,12 +4,18 @@
     name: stow
     state: present
 
+- name: Check if dotfiles dir exists
+  stat:
+    path: "/home/{{ user }}/dotfiles"
+  register: dots
+
 - name: Clone dotfiles
   git:
     repo: "{{ dotfiles_url }}"
     dest: "/home/{{ user }}/dotfiles"
     version: HEAD
     accept_hostkey: true
+  when: dots.stat.isdir is defined and not dots.stat.isdir
 
 # TODO use module
 - name: stow dotfiles
