@@ -4,5 +4,28 @@
     name: acpi
     state: present
 
-# TODO battery monitoring, icon and notif
-# hibernate/suspend
+- name: Install tlp
+  pacman:
+    name: tlp
+    state: present
+
+- name: Start tlp
+  systemd:
+    name: tlp
+    state: started
+    enabled: true
+
+- name: Mask systemd-rfkill
+  systemd:
+    name: systemd-rfkill
+    state: stopped
+    masked: true
+
+- name: Mask systemd-rfkill.socket
+  systemd:
+    name: systemd-rfkill.socket
+    state: stopped
+    masked: true
+
+# configure tlp
+# hibernate/suspend, lid close action
