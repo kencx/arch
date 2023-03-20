@@ -1,5 +1,4 @@
 ---
-
 - name: Install Go and tools
   pacman:
     name:
@@ -13,6 +12,7 @@
   pacman:
     name:
       - python
+      - python-pip
       - python-pipx
       - python-virtualenv
       # - python-pre-commit

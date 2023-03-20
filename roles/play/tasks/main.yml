@@ -13,6 +13,11 @@
     name: telegram-desktop
     state: present
 
+- name: Install yt-dlp
+  pacman:
+    name: yt-dlp
+    state: present
+
 - name: Install discord
   pacman:
     name: discord
