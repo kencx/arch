@@ -21,7 +21,7 @@ DEFAULT_ROOT_MOUNT=/mnt
 read -r -e -p "Enter mount point: " -i "${DEFAULT_ROOT_MOUNT}" ROOT_MOUNT
 
 BOOT_MOUNT="${ROOT_MOUNT}/boot"
-MOUNT_OPTS="rw,noatime,compress-force=zstd,space_cache=v2"
+MOUNT_OPTS="rw,noatime,compress-force=zstd,nodiscard,space_cache=v2"
 
 # redirect output
 LOG_PATH="./arch_prepare.log"
