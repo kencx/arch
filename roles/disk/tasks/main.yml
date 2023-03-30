@@ -5,3 +5,8 @@
       - udisks2
       - udiskie
     state: present
+
+- name: Install smartmontools
+  pacman:
+    name: smartmontools
+    state: present

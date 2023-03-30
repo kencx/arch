@@ -27,6 +27,27 @@
     group: root
     mode: 0644
 
+# TODO
+# - name: Install libinput-gestures from AUR
+
+- name: Add user to input group
+  user:
+    name: "{{ user }}"
+    groups: input
+    append: true
+
+- name: Copy libinput-gestures.conf
+  copy:
+    src: libinput-gestures.conf
+    dest: "/home/{{ user }}/.config/libinput-gestures.conf"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0644
+
+# TODO make idempotent
+- name: Start libinput-gestures
+  command: libinput-gestures-setup autostart start
+
 # webcam device
 - name: Install v4l2-ctl
   pacman:

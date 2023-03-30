@@ -25,6 +25,7 @@ base_packages:
   - glow
 
 shell: /bin/bash
+user: arch
 password: changeme
 base_timezone: Asia/Singapore
 base_locale: "en_US.UTF-8"
