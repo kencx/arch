@@ -9,7 +9,9 @@
 # shell command is necessary to force remove iptables due to
 # iptables dependency in systemd
 - name: Install iptables-nft
-  shell: "yes | pacman -S iptables-nft"
+  shell: |
+    set -o pipefail
+    yes | pacman -S iptables-nft
   when: nftables is changed
 
 - name: Remove iptables

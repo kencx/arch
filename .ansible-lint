@@ -1,0 +1,30 @@
+# exclude_paths included in this file are parsed relative to this file's location
+# and not relative to the CWD of execution. CLI arguments passed to the --exclude
+# option will be parsed relative to the CWD of execution.
+exclude_paths:
+  - .cache/
+  - .github/
+  - inventory/
+  - ${HOME}/.ansible/roles/
+
+skip_list:
+  - fqcn-builtins
+  - no-handler
+  - name
+
+warn_list:
+  - no-changed-when
+  - parser-error
+  - command-instead-of-module
+  - git-latest
+  - yaml
+  - no-relative-paths
+  - risky-file-permissions
+
+kinds:
+  - vars: "**/vars.{yml,yaml}"
+  - vars: "**/group_vars/*.{yml,yaml}"
+  - vars: "**/host_vars/*"
+  - vars: "**/defaults/*.{yml,yaml}"
+  - tasks: "**/tasks/*.{yml,yaml}"
+  - playbook: "main.{yml,yaml}"
