@@ -8,12 +8,12 @@
 
 # See https://wiki.archlinux.org/title/Steam#Installation
 - name: Install steam
-  pacman:
+  community.general.pacman:
     name: steam
     state: present
 
 - name: Install steam dependencies
-  pacman:
+  community.general.pacman:
     name:
       - nvidia-utils
       - lib32-systemd

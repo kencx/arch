@@ -1,6 +1,6 @@
 ---
 - name: Install Xorg
-  pacman:
+  community.general.pacman:
     name:
       - xorg-server
       - xorg-xinit
@@ -17,7 +17,7 @@
     append: true
 
 - name: Install window manager
-  pacman:
+  community.general.pacman:
     name:
       - bspwm
       - sxhkd
@@ -59,6 +59,7 @@
   copy:
     src: "/usr/share/doc/bspwm/examples/{{ item.src }}"
     dest: "/home/{{ user }}/.config/{{ item.dest }}"
+    mode: 0644
     remote_src: true
     force: false
   with_items:
@@ -70,7 +71,7 @@
 
 # config set in dotfiles
 - name: Install Redshift
-  pacman:
+  community.general.pacman:
     name: redshift
     state: present
   tags: redshift

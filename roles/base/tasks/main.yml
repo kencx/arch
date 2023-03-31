@@ -2,27 +2,27 @@
 - import_tasks: pacman.yml
 
 - name: Install base packages
-  pacman:
+  community.general.pacman:
     name: "{{ base_packages }}"
     state: present
     update_cache: true
 
 - name: Install bash
-  pacman:
+  community.general.pacman:
     name:
       - bash
       - bash-completion
     state: present
 
 - name: Install zsh
-  pacman:
+  community.general.pacman:
     name:
       - zsh
       - zsh-completions
     state: present
 
 - name: Set timezone
-  timezone:
+  community.general.timezone:
     name: "{{ base_timezone }}"
   register: tz
 
@@ -31,7 +31,7 @@
   when: tz is changed
 
 - name: Set locale
-  locale_gen:
+  community.general.locale_gen:
     name: "{{ base_locale }}"
     state: present
 
@@ -45,14 +45,14 @@
 - import_tasks: journald.yml
 
 - name: Install man pages
-  pacman:
+  community.general.pacman:
     name:
       - man-db
       - man-pages
     state: present
 
 - name: Install fonts
-  pacman:
+  community.general.pacman:
     name: "{{ base_fonts }}"
     state: present
 

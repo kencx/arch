@@ -1,6 +1,6 @@
 ---
 - name: Install stow
-  pacman:
+  community.general.pacman:
     name: stow
     state: present
 

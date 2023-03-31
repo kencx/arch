@@ -1,6 +1,6 @@
 ---
 - name: Install cups
-  pacman:
+  community.general.pacman:
     name: cups
     state: present
 

@@ -1,6 +1,6 @@
 ---
 - name: Install networking tools
-  pacman:
+  community.general.pacman:
     name:
       - gping
       - speedtest-cli

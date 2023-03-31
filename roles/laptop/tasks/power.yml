@@ -1,11 +1,11 @@
 ---
 - name: Install acpi
-  pacman:
+  community.general.pacman:
     name: acpi
     state: present
 
 - name: Install tlp
-  pacman:
+  community.general.pacman:
     name: tlp
     state: present
 

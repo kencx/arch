@@ -1,6 +1,6 @@
 ---
 - name: Install bluez[-utils]
-  pacman:
+  community.general.pacman:
     name:
       - bluez
       - bluez-utils

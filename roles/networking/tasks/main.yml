@@ -1,6 +1,6 @@
 ---
 - name: Install iwd
-  pacman:
+  community.general.pacman:
     name: iwd
     state: present
 

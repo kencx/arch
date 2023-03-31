@@ -1,6 +1,6 @@
 ---
 - name: Install nftables
-  pacman:
+  community.general.pacman:
     name:
       - nftables
     state: present
@@ -15,7 +15,7 @@
   when: nftables is changed
 
 - name: Remove iptables
-  pacman:
+  community.general.pacman:
     name: iptables
     state: absent
 
@@ -41,12 +41,12 @@
     - iptables
 
 - name: Install ufw
-  pacman:
+  community.general.pacman:
     name: ufw
     state: present
 
 - name: Enable and configure ufw incoming/outgoing rules
-  ufw:
+  community.general.ufw:
     direction: "{{ item.direction }}"
     policy: "{{ item.policy }}"
     state: enabled
@@ -55,7 +55,7 @@
     - {direction: incoming, policy: deny}
 
 - name: Configure ufw ports
-  ufw:
+  community.general.ufw:
     rule: "{{ item.rule }}"
     port: "{{ item.port }}"
     proto: "{{ item.proto }}"

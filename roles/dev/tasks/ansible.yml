@@ -1,12 +1,12 @@
 ---
 - name: Install Ansible core
-  pacman:
+  community.general.pacman:
     name:
       - ansible-core
     state: present
 
 - name: Install Ansible extras
-  pacman:
+  community.general.pacman:
     name:
       - ansible
       - ansible-lint
@@ -17,7 +17,7 @@
 # - name: Copy default ansible.cfg
 
 - name: Install molecule
-  pacman:
+  community.general.pacman:
     name:
       - molecule
       - molecule-docker

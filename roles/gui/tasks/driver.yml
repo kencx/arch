@@ -1,6 +1,6 @@
 ---
 - name: Install required video drivers
-  pacman:
+  community.general.pacman:
     name: "{{ gui_video_driver }}"
     state: present
   notify: regenerate initramfs

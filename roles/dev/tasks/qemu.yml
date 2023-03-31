@@ -1,13 +1,13 @@
 ---
 - name: Install qemu and libvirt
-  pacman:
+  community.general.pacman:
     name:
       - qemu-desktop
       - libvirt
     state: present
 
 - name: Install libvirt dependencies
-  pacman:
+  community.general.pacman:
     name:
       - dnsmasq
       - dmidecode
@@ -29,6 +29,6 @@
     enabled: true
 
 - name: Install virt-manager
-  pacman:
+  community.general.pacman:
     name: virt-manager
     state: present

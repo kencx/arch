@@ -5,7 +5,7 @@
 
 # brightness
 - name: Install xbacklight
-  pacman:
+  community.general.pacman:
     name: xorg-xbacklight
     state: present
 
@@ -13,7 +13,7 @@
 
 # touchpad
 - name: Install libinput
-  pacman:
+  community.general.pacman:
     name:
       - libinput
       - xf86-input-libinput
@@ -50,6 +50,6 @@
 
 # webcam device
 - name: Install v4l2-ctl
-  pacman:
+  community.general.pacman:
     name: v4l2-ctl
     state: present

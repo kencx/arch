@@ -1,6 +1,6 @@
 ---
 - name: Install Go and tools
-  pacman:
+  community.general.pacman:
     name:
       - go
       - go-tools
@@ -9,7 +9,7 @@
   tags: golang
 
 - name: Install Python and tools
-  pacman:
+  community.general.pacman:
     name:
       - python
       - python-pip
@@ -26,14 +26,14 @@
     state: present
 
 - name: Install rustup
-  pacman:
+  community.general.pacman:
     name:
       - rustup
     state: present
   tags: rustup
 
 - name: Install linters
-  pacman:
+  community.general.pacman:
     name:
       - shellcheck
       - yamllint
@@ -44,7 +44,7 @@
   tags: linters
 
 - name: Install other tools
-  pacman:
+  community.general.pacman:
     name:
       - jq
       - direnv

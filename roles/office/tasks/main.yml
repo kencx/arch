@@ -1,36 +1,36 @@
 ---
 - name: Install libreoffice
-  pacman:
+  community.general.pacman:
     name:
       - libreoffice-still
     state: present
   tags: libreoffice
 
 - name: Install libqalculate
-  pacman:
+  community.general.pacman:
     name: libqalculate
     state: present
 
 - name: Install xsv
-  pacman:
+  community.general.pacman:
     name: xsv
     state: present
   tags: xsv
 
 - name: Install zathura
-  pacman:
+  community.general.pacman:
     name: zathura
     state: present
 
 - name: Install zathura epub support
-  pacman:
+  community.general.pacman:
     name: zathura-pdf-mupdf
     reason: dependency
     state: present
   tags: zathura-extras
 
 - name: Install Obsidian
-  pacman:
+  community.general.pacman:
     name: obsidian
     state: present
   tags: obsidian

@@ -10,7 +10,7 @@
     state: restarted
 
 - name: restart ufw
-  ufw:
+  community.general.ufw:
     state: reloaded
 
 - name: reload nftables

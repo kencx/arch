@@ -1,12 +1,12 @@
 ---
 - name: Install udisks2
-  pacman:
+  community.general.pacman:
     name:
       - udisks2
       - udiskie
     state: present
 
 - name: Install smartmontools
-  pacman:
+  community.general.pacman:
     name: smartmontools
     state: present

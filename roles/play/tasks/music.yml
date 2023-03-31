@@ -1,6 +1,6 @@
 ---
 - name: Install music packages
-  pacman:
+  community.general.pacman:
     name:
       - mpd
       - ncmpcpp

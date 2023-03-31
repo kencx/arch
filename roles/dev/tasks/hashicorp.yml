@@ -1,18 +1,18 @@
 ---
 - name: Install Terraform
-  pacman:
+  community.general.pacman:
     name:
       - terraform
     state: present
 
 - name: Install Packer
-  pacman:
+  community.general.pacman:
     name:
       - packer
     state: present
 
 - name: Install Vagrant
-  pacman:
+  community.general.pacman:
     name:
       - vagrant
     state: present

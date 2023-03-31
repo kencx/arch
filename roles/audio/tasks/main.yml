@@ -1,6 +1,6 @@
 ---
 - name: Install pipewire and support packages
-  pacman:
+  community.general.pacman:
     name: "{{ item }}"
     state: present
   with_items:
@@ -34,7 +34,7 @@
     - pipewire-pulse
 
 # - name: Install wireplumber
-#   pacman:
+#   community.general.pacman:
 #     name: wireplumber
 #     state: present
 #

@@ -15,7 +15,7 @@
     - "'AMD' in ansible_processor | join(' ')"
 
 - name: Install microcode
-  pacman:
+  community.general.pacman:
     name: "{{ vendor }}-ucode"
     state: present
   when:
@@ -24,7 +24,7 @@
   # notify: rebuild grub
 
 - name: Install backup kernel
-  pacman:
+  community.general.pacman:
     name: linux-lts
     state: present
   # notify: rebuild grub
