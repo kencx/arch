@@ -33,6 +33,7 @@
 #### office
 - libreoffice
 - obsidian
+- pcmanfm
 - xsv
 - zathura-extras
 

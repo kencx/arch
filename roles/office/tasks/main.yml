@@ -34,3 +34,9 @@
     name: obsidian
     state: present
   tags: obsidian
+
+- name: Install pcmanfm file manager
+  community.general.pacman:
+    name: pcmanfm-gtk3
+    state: present
+  tags: pcmanfm
