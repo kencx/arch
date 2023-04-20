@@ -1,6 +1,8 @@
 ---
-
-# TODO set up bootloader/grub
+- name: Install grub
+  community.general.pacman:
+    name: grub
+    state: present
 
 - set_fact:
     vendor: intel
@@ -21,17 +23,45 @@
   when:
     - vendor is defined
     - physical
-  # notify: rebuild grub
+  notify: rebuild grub
 
 - name: Install backup kernel
   community.general.pacman:
     name: linux-lts
     state: present
-  # notify: rebuild grub
+  notify: rebuild grub
 
 - name: Set top level menu entry
   lineinfile:
     path: /etc/default/grub
     line: 'GRUB_TOP_LEVEL=/boot/vmlinuz-linux'
     state: present
-  # notify: rebuild grub
+  notify: rebuild grub
+
+- name: Disable submenus
+  lineinfile:
+    path: /etc/default/grub
+    regex: ^#GRUB_DISABLE_SUBMENU=y
+    line: GRUB_DISABLE_SUBMENU=y
+  notify: rebuild grub
+
+- name: Add custom Grub menu entry commands
+  copy:
+    src: 40_custom
+    dest: /etc/grub.d/40_custom
+    owner: root
+    group: root
+    mode: 0755
+  notify: rebuild grub
+
+- name: Let grub remember last selection as boot default
+  notify: rebuild grub
+  block:
+    - lineinfile:
+        path: /etc/default/grub
+        regex: ^GRUB_DEFAULT=0
+        line: GRUB_DEFAULT=saved
+    - lineinfile:
+        path: /etc/default/grub
+        regex: ^#GRUB_SAVEDEFAULT=true
+        line: GRUB_SAVEDEFAULT=true

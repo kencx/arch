@@ -6,3 +6,6 @@
 
 - name: update arch repo mirrors
   command: reflector @/etc/xdg/reflector/reflector.conf
+
+- name: rebuild grub
+  command: grub-mkconfig -o /boot/grub/grub.cfg
