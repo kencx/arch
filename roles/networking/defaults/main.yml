@@ -1,6 +1,7 @@
 ---
 network_static_ip: false
-network_ip_addr: ""
+network_wired_ip_addr: ""
+network_wireless_ip_addr: ""
 network_gw: ""
 network_dns: ""
 network_routes: []

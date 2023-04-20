@@ -2,7 +2,7 @@ user: kenc
 password: changeme
 shell: /bin/zsh
 network_static_ip: true
-network_ip_addr: "192.168.86.82/24"
+network_wireless_ip_addr: "192.168.86.82/24"
 network_gw: "192.168.86.1"
 network_dns: "192.168.86.49"
 network_routes:

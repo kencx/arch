@@ -27,7 +27,6 @@
     - wireless-dhcp.network
   when: not network_static_ip
 
-# TODO wired and wireless cannot have same ip
 - name: Copy static network configuration
   template:
     src: "{{ item }}.j2"
