@@ -1,0 +1,10 @@
+user: kenc
+password: password
+shell: /bin/zsh
+network_static_ip: false
+# network_dns: "192.168.86.49"
+network_routes:
+  - gw: "192.168.86.6"
+    dest: "10.10.10.0/24"
+gui_video_driver: xf86-video-intel
+dotfiles_url: "https://github.com/kencx/dotfiles.git"
