@@ -14,6 +14,14 @@
     - systemd-resolved
     - iwd
 
+- name: Configure systemd-networkd-wait-online with timeout
+  copy:
+    src: systemd-networkd-wait-online
+    dest: "/etc/systemd/system/systemd-networkd-wait-online.service"
+    owner: root
+    group: root
+    mode: 0644
+
 - name: Copy DHCP network configuration
   template:
     src: "{{ item }}.j2"
