@@ -20,8 +20,7 @@
   community.general.pacman:
     name:
       - molecule
-      - molecule-docker
-      - molecule-vagrant
+      - molecule-plugins
     reason: dependency
     state: present
   tags: molecule
