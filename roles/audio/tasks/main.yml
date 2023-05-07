@@ -33,6 +33,11 @@
     - pipewire
     - pipewire-pulse
 
+- name: Install playerctl
+  community.general.pacman:
+    name: playerctl
+    state: present
+
 # - name: Install wireplumber
 #   community.general.pacman:
 #     name: wireplumber
