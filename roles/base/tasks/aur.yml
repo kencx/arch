@@ -1,0 +1,30 @@
+---
+# TODO install from existing remote custom repositoryS
+
+- name: Check if existing repository exists
+  stat:
+    path: /var/cache/pacman/aurto
+  register: aurto
+
+- name: Install aurutils
+  become: false
+  kewlfft.aur.aur:
+    name:
+      - aurutils
+      - aurto
+    use: makepkg
+    state: present
+  when: aurto.stat.isdir is defined and not aurto.stat.isdir
+
+- name: Initialize aurto
+  block:
+    - name: aurto init
+      command: aurto init
+      register: aurto_init
+
+    - name: Add aurto to aurto
+      command: aurto add aurto
+      when: aurto_init is defined and aurto_init is changed
+  when:
+    - aurto.stat.isdir is defined
+    - not aurto.stat.isdir
