@@ -15,14 +15,8 @@
       - python-pip
       - python-pipx
       - python-virtualenv
-      # - python-pre-commit
-    state: present
-
-- name: Install Python dependencies
-  pacman:
-    name:
-      - python-pip
-    reason: dependency
+      - python-lsp-server
+      - flake8
     state: present
 
 - name: Install rustup
@@ -35,7 +29,6 @@
 - name: Install linters
   community.general.pacman:
     name:
-      - shellcheck
       - yamllint
       - stylua
       - luacheck
@@ -50,7 +43,6 @@
       - direnv
       - sops
       - age
-      - hugo
     state: present
 
 - import_tasks: docker.yml

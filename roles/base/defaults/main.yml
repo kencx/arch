@@ -23,6 +23,7 @@ base_packages:
   - libnotify
   - scrot
   - glow
+  - hugo
 
 shell: /bin/bash
 user: arch
