@@ -4,9 +4,8 @@ set -euo pipefail
 
 # check for dependencies
 DEPENDENCIES=(btrfs sgdisk mkfs.fat mkfs.btrfs pacstrap pacman genfstab arch-chroot)
-for i in "${DEPENDENCIES[@]}";
-do
-    if ! which "$i" > /dev/null; then
+for i in "${DEPENDENCIES[@]}"; do
+    if ! which "$i" >/dev/null; then
         echo -e "$i is required!"
     fi
 done
@@ -15,7 +14,7 @@ done
 read -r -p "Choose a disk to format: " TARGET_DEVICE
 NVME=
 if [[ $TARGET_DEVICE =~ ^/dev/nvme.* ]]; then
-   NVME=true
+    NVME=true
 fi
 
 DEFAULT_SUBVOLS=(home var tmp .snapshots)
@@ -52,8 +51,7 @@ echo "Creating btrfs root subvolume"
 btrfs subvolume create "${ROOT_MOUNT}/@"
 
 echo "Creating btrfs subvolumes ${SUBVOLUMES[*]}"
-for i in "${SUBVOLUMES[@]}";
-do
+for i in "${SUBVOLUMES[@]}"; do
     btrfs subvolume create "${ROOT_MOUNT}/@${i}"
 done
 
@@ -62,8 +60,7 @@ umount -v "${ROOT_MOUNT}"
 # mount btrfs subvolumes
 echo "Mounting btrfs subvolumes"
 mount -v -o "$MOUNT_OPTS,subvol=@" "${PARTITION_2}" "${ROOT_MOUNT}"
-for i in "${SUBVOLUMES[@]}";
-do
+for i in "${SUBVOLUMES[@]}"; do
     mkdir -pv "${ROOT_MOUNT}/${i}"
     mount -v -o "${MOUNT_OPTS},subvol=@${i}" "${PARTITION_2}" "${ROOT_MOUNT}/${i}"
 done
@@ -84,7 +81,7 @@ pacman --no-confirm -Sy archlinux-keyring
 pacstrap -K "${ROOT_MOUNT}" base base-devel linux linux-firmware sudo vim grub efibootmgr iwd
 
 echo "Generating fstab"
-genfstab -U "${ROOT_MOUNT}" >> "${ROOT_MOUNT}/etc/fstab"
+genfstab -U "${ROOT_MOUNT}" >>"${ROOT_MOUNT}/etc/fstab"
 
 echo "Chroot-ing into ${ROOT_MOUNT}"
 # arch-chroot "${ROOT_MOUNT}" /bin/bash

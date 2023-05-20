@@ -33,6 +33,7 @@
       - stylua
       - luacheck
       - codespell
+      - shfmt
     state: present
   tags: linters
 
