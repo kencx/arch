@@ -4,6 +4,7 @@
     name:
       - rofi
       - dunst
+      - feh
       # - picom
     state: present
 
@@ -16,8 +17,6 @@
 
 - import_tasks: eww.yml
 - import_tasks: dotfiles.yml
-- import_tasks: firefox.yml
-  tags: firefox
 - import_tasks: neovim.yml
   tags: neovim
 

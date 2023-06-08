@@ -39,8 +39,9 @@
 
 #### play
 - discord
-- firefox
 - steam
 
 #### ricing
 - neovim
+
+#### firefox

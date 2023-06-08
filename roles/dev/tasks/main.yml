@@ -17,6 +17,7 @@
       - python-virtualenv
       - python-lsp-server
       - flake8
+      - pyenv
     state: present
 
 - name: Install rustup

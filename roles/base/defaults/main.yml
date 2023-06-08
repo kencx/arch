@@ -24,6 +24,8 @@ base_packages:
   - scrot
   - glow
   - hugo
+  - imagemagick
+  - yt-dlp
 
 shell: /bin/bash
 user: arch

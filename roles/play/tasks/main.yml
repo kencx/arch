@@ -1,21 +1,7 @@
 ---
-- name: Install firefox
-  community.general.pacman:
-    name:
-      - firefox
-    state: present
-  tags: firefox
-
-# TODO setup extensions
-
 - name: Install telegram
   community.general.pacman:
     name: telegram-desktop
-    state: present
-
-- name: Install yt-dlp
-  community.general.pacman:
-    name: yt-dlp
     state: present
 
 - name: Install mpv

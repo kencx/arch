@@ -4,6 +4,7 @@
     name:
       - gping
       - speedtest-cli
+      # - bind
       # - whois
       # - netcat
       # - nmap
