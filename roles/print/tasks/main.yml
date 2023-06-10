@@ -4,22 +4,71 @@
     name: cups
     state: present
 
-# Socket based activation only
-- name: Enable cups.socket
+- name: Install printer driver
+  community.general.pacman:
+    name: "{{ print_driver }}"
+    state: present
+  when: print_driver != ""
+  tags: aur
+
+- name: Allow print ports in ufw
+  community.general.ufw:
+    rule: "{{ item.rule }}"
+    port: "{{ item.port }}"
+    proto: "{{ item.proto }}"
+    comment: "{{ item.comment | default('') }}"
+  with_items:
+    - rule: allow
+      port: 631
+      proto: tcp
+      comment: "cupsd"
+    - rule: allow
+      port: 5353
+      proto: udp
+      comment: "avahi"
+  notify: restart ufw
+
+# Setup .local hostname resolution with Avahi
+- name: Install Avahi
+  community.general.pacman:
+    name: avahi
+    state: present
+
+# Must be disabled to use Avahi
+# See https://wiki.archlinux.org/title/Avahi#Installation
+- name: Disable systemd-resolved multicast DNS
+  lineinfile:
+    path: /etc/systemd/resolved.conf
+    regex: ^#MulticastDNS=yes$
+    line: "MulticastDNS=no"
+    state: present
+
+- name: Restart systemd-resolved
   systemd:
-    name: cups.socket
+    name: systemd-resolved
+    state: restarted
+
+# See https://wiki.archlinux.org/title/Avahi#Hostname_resolution
+- name: Install nss-mdns
+  community.general.pacman:
+    name: nss-mdns
+    state: present
+
+- name: Start and enable avahi-daemon
+  systemd:
+    name: avahi-daemon.service
     state: started
     enabled: true
 
-- name: Disable cups.service
+- name: Edit /etc/nsswitch.conf
+  lineinfile:
+    path: /etc/nsswitch.conf
+    regex: "^hosts:"
+    line: "hosts: mymachines mdns_minimal [NOTFOUND=return] resolve [!UNAVAIL=return] files myhostname dns"
+    state: present
+
+- name: Enable cups.service
   systemd:
     name: cups.service
-    state: stopped
-    enabled: false
-
-- name: Install printer driver
-  kewlfft.aur.aur:
-    name: "{{ print_driver }}"
-    use: makepkg
-    state: present
-  when: print_driver != ""
+    state: started
+    enabled: true
