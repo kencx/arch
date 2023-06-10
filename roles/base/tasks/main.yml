@@ -64,3 +64,12 @@
 - import_tasks: aur.yml
   when: base_add_custom_repo
   tags: aur
+
+- name: Add date to /etc/issue
+  lineinfile:
+    path: /etc/issue
+    line: 'Date: \d \t'
+    owner: root
+    group: root
+    mode: 0644
+    state: present

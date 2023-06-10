@@ -14,19 +14,28 @@
     state: present
 
 # - name: Install pure zsh prompt from AUR
+- name: Install eww from AUR
+  community.general.pacman:
+    name: eww
+    state: present
+  tags: aur
 
-- import_tasks: eww.yml
 - import_tasks: dotfiles.yml
 - import_tasks: neovim.yml
   tags: neovim
 
+- name: Get "{{ ricing_user }}" uid
+  getent:
+    database: passwd
+    key: "{{ ricing_user }}"
+
 - set_fact:
-    xdg_runtime_dir: "/run/user/{{ uid.stdout }}"
+    xdg_runtime_dir: "/run/user/{{ getent_passwd[vars['ricing_user']][1] }}"
   changed_when: false
 
 - name: Start redshift user service
   become: true
-  become_user: "{{ user }}"
+  become_user: "{{ ricing_user }}"
   environment:
     XDG_RUNTIME_DIR: "{{ xdg_runtime_dir }}"
   systemd:
@@ -37,7 +46,7 @@
 
 - name: Start dunst user service
   become: true
-  become_user: "{{ user }}"
+  become_user: "{{ ricing_user }}"
   environment:
     XDG_RUNTIME_DIR: "{{ xdg_runtime_dir }}"
   systemd:

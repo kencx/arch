@@ -7,4 +7,11 @@
 
 - name: Install neovim plugins
   command: |
-    nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+    nvim --headless "+Lazy! sync" +qa
+
+- name: Pull lspcontainers images
+  docker_image:
+    name: "{{ item }}"
+    source: pull
+    state: present
+  with_items: "{{ ricing_neovim_lspcontainers }}"

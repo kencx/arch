@@ -1,5 +1,11 @@
 ---
-user: "arch"
+ricing_user: "arch"
 ricing_nerd_font: "ttf-firacode-nerd"
-startpage_url: "https://github.com/kencx/startpage"
-startpage_dest: "/home/{{ user }}/.mozilla/startpage"
+ricing_neovim_lspcontainers:
+  - lspcontainers/bash-language-server
+  - lspcontainers/terraform-ls
+  - lspcontainers/lua-language-server
+  - lspcontainers/yaml-language-server
+  - lspcontainers/typescript-language-server
+  - lspcontainers/svelte-language-server
+  - lspcontainers/docker-language-server

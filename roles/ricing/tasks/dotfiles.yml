@@ -16,11 +16,3 @@
     version: HEAD
     accept_hostkey: true
   when: dots.stat.isdir is defined and not dots.stat.isdir
-
-# TODO use module
-- name: stow dotfiles
-  command:
-    cmd: make stow
-    chdir: "/home/{{ user }}/dotfiles"
-
-# check for failure
