@@ -38,6 +38,12 @@
     state: present
   tags: linters
 
+- name: Install shellcheck
+  community.general.pacman:
+    name: shellcheck-bin
+    state: present
+  tags: aur
+
 - name: Install other tools
   community.general.pacman:
     name:

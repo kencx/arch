@@ -1,30 +1,22 @@
 ---
-# TODO install from existing remote custom repositoryS
+- name: Add custom repository file to /etc/pacman.d
+  template:
+    src: "aur_custom_repo.j2"
+    dest: "/etc/pacman.d/{{ base_custom_repo_name }}"
+    owner: root
+    group: root
+    mode: 0644
 
-- name: Check if existing repository exists
-  stat:
-    path: /var/cache/pacman/aurto
-  register: aurto
+- name: Add custom remote repository
+  lineinfile:
+    path: /etc/pacman.conf
+    line: Include = /etc/pacman.d/{{ base_custom_repo_name }}
+    owner: root
+    group: root
+    mode: 0644
 
-- name: Install aurutils
-  become: false
-  kewlfft.aur.aur:
-    name:
-      - aurutils
-      - aurto
-    use: makepkg
+- name: Install AUR packages
+  pacman:
+    name: "{{ base_aur_packages }}"
     state: present
-  when: aurto.stat.isdir is defined and not aurto.stat.isdir
-
-- name: Initialize aurto
-  block:
-    - name: aurto init
-      command: aurto init
-      register: aurto_init
-
-    - name: Add aurto to aurto
-      command: aurto add aurto
-      when: aurto_init is defined and aurto_init is changed
-  when:
-    - aurto.stat.isdir is defined
-    - not aurto.stat.isdir
+    update_cache: true

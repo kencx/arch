@@ -1,10 +1,12 @@
 # Roles
 
 ## Tags
+- aur
 - audio
 - bluetooth
 - disk
 - dev
+- firefox
 - gui
 - laptop
 - office
@@ -43,5 +45,3 @@
 
 #### ricing
 - neovim
-
-#### firefox

@@ -74,5 +74,24 @@ See [ROLES](ROLES.md) for all tags or use `list-tags`:
 $ ansible-playbook main.yml --list-tags
 ```
 
+## Installing Packages from AUR
+
+All AUR packages are installed via a custom repository and will be tagged with
+the `aur` tag. This requires a local or remote custom repository with added AUR
+packages. It must be included as an additional server in the `base` role:
+
+```yml
+base_add_custom_repo: true
+base_custom_repo_name: custom
+base_custom_repo_sig_level: "Optional TrustAll"
+base_custom_repo_url: "file:///var/cache/pacman/{{ base_custom_repo_name }}"
+```
+
+along with tag `aur` when running the playbook:
+
+```bash
+$ ansible-playbook main.yml --tags="aur"
+```
+
 ## References
 - [spark](https://github.com/pigmonkey/spark/)

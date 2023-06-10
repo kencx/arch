@@ -40,7 +40,6 @@
     name: "{{ base_hostname }}"
 
 - import_tasks: user.yml
-- import_tasks: aur.yml
 - import_tasks: boot.yml
 - import_tasks: journald.yml
 
@@ -62,3 +61,6 @@
     state: started
     enabled: true
 
+- import_tasks: aur.yml
+  when: base_add_custom_repo
+  tags: aur
