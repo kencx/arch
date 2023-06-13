@@ -28,6 +28,7 @@
 - golang
 - hashicorp
 - linters
+- minio
 - molecule
 - qemu
 - rustup

@@ -53,6 +53,12 @@
       - age
     state: present
 
+- name: Install minio client
+  pacman:
+    name: minio-client
+    state: present
+  tags: minio
+
 - import_tasks: docker.yml
   tags: docker
 
