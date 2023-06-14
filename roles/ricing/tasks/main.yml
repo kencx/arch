@@ -13,7 +13,12 @@
     name: "{{ ricing_nerd_font }}"
     state: present
 
-# - name: Install pure zsh prompt from AUR
+- name: Install zsh-pure-prompt from AUR
+  pacman:
+    name: zsh-pure-prompt
+    state: present
+  tags: aur
+
 - name: Install eww from AUR
   community.general.pacman:
     name: eww
