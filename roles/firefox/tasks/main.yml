@@ -1,0 +1,12 @@
+---
+- name: Install firefox
+  pacman:
+    name: firefox
+    state: present
+
+# TODO
+# Create profile
+# install stylesheets
+# install user.js
+
+- import_tasks: extensions.yml

@@ -1,0 +1,4 @@
+---
+firefox_aur_packages:
+  - firefox-extension-reddit-enhancement-suite
+  - firefox-extension-bitwarden
