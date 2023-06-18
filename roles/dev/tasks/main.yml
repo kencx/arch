@@ -65,6 +65,9 @@
 - import_tasks: qemu.yml
   tags: qemu
 
+- import_tasks: virtualbox.yml
+  tags: virtualbox
+
 - import_tasks: ansible.yml
   tags: ansible
 

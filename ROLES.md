@@ -32,6 +32,7 @@
 - molecule
 - qemu
 - rustup
+- virtualbox
 
 #### office
 - libreoffice

@@ -1,0 +1,10 @@
+---
+- name: Install virtualbox-host-modules-arch
+  pacman:
+    name: virtualbox-host-modules-arch
+    state: present
+
+- name: Install virtualbox-guest-iso
+  pacman:
+    name: virtualbox-guest-iso
+    state: present
