@@ -39,6 +39,9 @@
 
   roles:
     - role: base
+    - role: aur
+      tags: ['aur']
+
     - role: networking
     - role: security
 

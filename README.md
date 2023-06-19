@@ -78,13 +78,20 @@ $ ansible-playbook main.yml --list-tags
 
 All AUR packages are installed via a custom repository and will be tagged with
 the `aur` tag. This requires a local or remote custom repository with added AUR
-packages. It must be included as an additional server in the `base` role:
+packages. It must be included as an additional server in the `aur` role:
 
 ```yml
-base_add_custom_repo: true
-base_custom_repo_name: custom
-base_custom_repo_sig_level: "Optional TrustAll"
-base_custom_repo_url: "file:///var/cache/pacman/{{ base_custom_repo_name }}"
+# set to $USER
+aur_user: arch
+aur_custom_repo_name: "custom"
+aur_custom_repo_dir: "/var/cache/pacman/{{ aur_custom_repo_name }}"
+aur_custom_repo_sig_level: "Optional TrustAll"
+
+# local repo
+aur_custom_repo_url: "file://{{ aur_custom_repo_dir }}"
+
+# remote repo
+aur_custom_repo_url: "https://aur.example.xyz/aur"
 ```
 
 along with tag `aur` when running the playbook:
@@ -92,6 +99,11 @@ along with tag `aur` when running the playbook:
 ```bash
 $ ansible-playbook main.yml --tags="aur"
 ```
+
+### Remote Repository
+
+A remote repository can be hosted on any remote file server or S3 bucket. The
+custom `aura` script assumes the custom repository is located in an Minio S3 bucket.
 
 ## References
 - [spark](https://github.com/pigmonkey/spark/)

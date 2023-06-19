@@ -1,0 +1,38 @@
+---
+- name: Create custom repository holding directory
+  file:
+    path: "{{ aur_custom_repo_dir }}"
+    owner: "{{ aur_user }}"
+    group: "{{ aur_user }}"
+    mode: 0755
+    state: directory
+
+- name: Add custom repository file to /etc/pacman.d
+  template:
+    src: "aur_custom_repo.j2"
+    dest: "/etc/pacman.d/{{ aur_custom_repo_name }}"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Add custom remote repository
+  lineinfile:
+    path: /etc/pacman.conf
+    line: Include = /etc/pacman.d/{{ aur_custom_repo_name }}
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Install AUR packages
+  pacman:
+    name: "{{ aur_packages }}"
+    state: present
+    update_cache: true
+
+- name: Copy aura script
+  template:
+    src: "aura.j2"
+    dest: "/usr/bin/aura"
+    owner: root
+    group: root
+    mode: 0755

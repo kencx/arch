@@ -1,0 +1,15 @@
+---
+aur_user: arch
+aur_custom_repo_name: "custom"
+aur_custom_repo_dir: "/var/cache/pacman/{{ aur_custom_repo_name }}"
+aur_custom_repo_sig_level: "Optional TrustAll"
+aur_custom_repo_url: "file://{{ aur_custom_repo_dir }}"
+aur_packages:
+  - aurutils
+  - gotop-bin
+  - anki-official-binary-bundle
+  - openbooks-bin
+
+
+# assuming custom repo is a remote s3 bucket
+aur_remote_s3_bucket: "aur"

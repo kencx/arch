@@ -61,10 +61,6 @@
     state: started
     enabled: true
 
-- import_tasks: aur.yml
-  when: base_add_custom_repo
-  tags: aur
-
 - name: Add date to /etc/issue
   lineinfile:
     path: /etc/issue
