@@ -6,8 +6,8 @@ aur_custom_repo_sig_level: "Optional TrustAll"
 aur_custom_repo_url: "file://{{ aur_custom_repo_dir }}"
 aur_packages:
   - aurutils
-  - gotop-bin
   - anki-official-binary-bundle
+  - hurl-rs
   - openbooks-bin
 
 

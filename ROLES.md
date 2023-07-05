@@ -24,6 +24,7 @@
 #### dev
 - ansible
 - ansible-extras
+- dive
 - docker
 - golang
 - hashicorp
@@ -38,6 +39,7 @@
 - libreoffice
 - obsidian
 - pcmanfm
+- pdfcpu
 - xsv
 - zathura-extras
 

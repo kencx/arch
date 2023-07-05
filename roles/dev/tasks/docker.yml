@@ -36,4 +36,8 @@
     state: started
     enabled: true
 
-# TODO install dive from aur
+- name: Install dive
+  pacman:
+    name: dive
+    state: present
+  tags: dive

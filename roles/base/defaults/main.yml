@@ -26,6 +26,7 @@ base_packages:
   - hugo
   - imagemagick
   - yt-dlp
+  - btop
 
 shell: /bin/bash
 user: arch

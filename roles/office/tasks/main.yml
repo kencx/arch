@@ -29,6 +29,14 @@
     state: present
   tags: zathura-extras
 
+- name: Install pdfcpu
+  pacman:
+    name: pdfcpu
+    state: present
+  tags:
+    - pdfcpu
+    - aur
+
 - name: Install Obsidian
   community.general.pacman:
     name: obsidian

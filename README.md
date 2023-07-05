@@ -102,8 +102,11 @@ $ ansible-playbook main.yml --tags="aur"
 
 ### Remote Repository
 
-A remote repository can be hosted on any remote file server or S3 bucket. The
-custom `aura` script assumes the custom repository is located in an Minio S3 bucket.
+A remote repository can be hosted on any remote file server or S3 bucket. This
+repository can be managed with a [custom
+script](https://github.com/kencx/aura.git) that assumes it is located in an
+Minio S3 bucket.
+
 
 ## References
 - [spark](https://github.com/pigmonkey/spark/)
