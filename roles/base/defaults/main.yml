@@ -27,6 +27,7 @@ base_packages:
   - imagemagick
   - yt-dlp
   - btop
+  - bitwarden-cli
 
 shell: /bin/bash
 user: arch
