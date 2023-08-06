@@ -3,13 +3,15 @@ aur_user: arch
 aur_custom_repo_name: "custom"
 aur_custom_repo_dir: "/var/cache/pacman/{{ aur_custom_repo_name }}"
 aur_custom_repo_sig_level: "Optional TrustAll"
-aur_custom_repo_url: "file://{{ aur_custom_repo_dir }}"
 aur_packages:
   - aurutils
   - anki-official-binary-bundle
   - hurl-rs
   - openbooks-bin
+aur_script_dest: "/usr/bin/aura"
 
+aur_remote_s3_repo: false
+aur_s3_endpoint: "https://s3.example.com"
+aur_s3_bucket: "aur"
 
-# assuming custom repo is a remote s3 bucket
-aur_remote_s3_bucket: "aur"
+aur_custom_repo_url: "{{ aur_s3_endpoint + '/' + aur_s3_bucket if (aur_remote_s3_repo) else 'file://' + aur_custom_repo_dir }}"
