@@ -16,8 +16,17 @@
   community.general.pacman:
     name:
       - nvidia-utils
+      - lib32-nvidia-utils
       - lib32-systemd
     reason: dependency
     state: present
 
-# TODO install proton from aur
+- name: Create custom steam directory
+  file:
+    path: "/mnt/games"
+    owner: root
+    group: root
+    mode: 0755
+    state: directory
+
+# Manually move Steam directory to new custom location
