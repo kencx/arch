@@ -13,8 +13,21 @@
     state: present
   tags: ansible-extras
 
-# TODO ansible.cfg
-# - name: Copy default ansible.cfg
+- name: Copy default ansible.cfg
+  copy:
+    content: |
+      [default]
+      force_color = true
+      fact_caching = community.general.yaml
+      stdout_callback = community.general.yaml
+      interpreter_python = python3
+      ansible_managed = This file is managed by Ansible.%n
+        date: %Y-%m-%d %H:%M:%S
+      host_key_checking = False
+    dest: "/home/{{ user }}/.ansible.cfg"
+    mode: 0644
+    owner: "{{ user }}"
+    group: "{{ user }}"
 
 - name: Install molecule
   community.general.pacman:
