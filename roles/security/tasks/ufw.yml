@@ -1,44 +1,22 @@
 ---
-- name: Install nftables
-  community.general.pacman:
-    name:
-      - nftables
-    state: present
-  register: nftables
+- name: Setup nftables
+  import_tasks: nftables.yml
+  tags: nftables
 
-# shell command is necessary to force remove iptables due to
-# iptables dependency in systemd
-- name: Install iptables-nft
-  shell: |
-    set -o pipefail
-    yes | pacman -S iptables-nft
-  when: nftables is changed
+- name: Setup iptables
+  when: "'nftables' not in ansible_run_tags"
+  block:
+    - name: Install iptables
+      community.general.pacman:
+        name:
+          - iptables
+        state: present
 
-- name: Remove iptables
-  community.general.pacman:
-    name: iptables
-    state: absent
-
-- name: Add nftables.service
-  template:
-    src: nftables.service.j2
-    dest: /etc/systemd/system/nftables.service
-    owner: root
-    group: root
-    mode: 0644
-  notify: reload nftables
-
-# TODO replace docker iptables rules with nftables
-# TODO bind fail2ban to nftables
-
-- name: Start nftables
-  systemd:
-    name: "{{ item }}"
-    state: started
-    enabled: true
-  with_items:
-    - nftables
-    - iptables
+    - name: Start and enable iptables
+      systemd:
+        name: iptables
+        state: started
+        enabled: true
 
 - name: Install ufw
   community.general.pacman:
