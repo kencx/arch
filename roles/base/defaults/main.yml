@@ -28,6 +28,7 @@ base_packages:
   - yt-dlp
   - btop
   - bitwarden-cli
+  - entr
 
 shell: /bin/bash
 user: arch
