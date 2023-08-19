@@ -1,0 +1,19 @@
+---
+- name: Install rubocop
+  pacman:
+    name: rubocop
+    state: present
+
+- name: Install ruby-solargraph
+  pacman:
+    name: ruby-solargraph
+    state: present
+  tags: aur
+
+# required dependency for solargraph (~> 2.0),
+# ruby-rbs package on the AUR is v3.1
+- name: Install rbs dependency
+  become: true
+  command:
+    cmd: "gem install --no-user-install rbs -v 2.8.4"
+    creates: "/usr/bin/rbs"

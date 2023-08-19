@@ -32,6 +32,7 @@
 - minio
 - molecule
 - qemu
+- ruby
 - rustup
 - virtualbox
 

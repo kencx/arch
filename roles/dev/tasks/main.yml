@@ -27,6 +27,9 @@
     state: present
   tags: rustup
 
+- import_tasks: ruby.yml
+  tags: ruby
+
 - name: Install linters
   community.general.pacman:
     name:
