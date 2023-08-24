@@ -48,3 +48,11 @@
     name: pcmanfm-gtk3
     state: present
   tags: pcmanfm
+
+- name: Install pandoc-bin
+  pacman:
+    name: pandoc-bin
+    state: present
+  tags:
+    - pandoc
+    - aur

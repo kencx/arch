@@ -17,3 +17,9 @@
   command:
     cmd: "gem install --no-user-install rbs -v 2.8.4"
     creates: "/usr/bin/rbs"
+
+- name: Install rbenv
+  pacman:
+    name: rbenv
+    state: present
+  tags: aur
