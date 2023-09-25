@@ -24,7 +24,7 @@
     mode: 0644
 
 - name: Install AUR packages
-  pacman:
+  community.general.pacman:
     name: "{{ aur_packages }}"
     state: present
     update_cache: true
@@ -33,6 +33,7 @@
   git:
     repo: "https://github.com/kencx/aura.git"
     dest: "/tmp/aura"
+    version: HEAD
 
 - name: Copy aura script
   copy:

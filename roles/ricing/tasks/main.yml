@@ -4,6 +4,7 @@
     name:
       - rofi
       - dunst
+      - nsxiv
       - feh
       # - picom
     state: present
@@ -14,7 +15,7 @@
     state: present
 
 - name: Install zsh-pure-prompt from AUR
-  pacman:
+  community.general.pacman:
     name: zsh-pure-prompt
     state: present
   tags: aur

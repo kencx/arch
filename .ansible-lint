@@ -11,6 +11,7 @@ skip_list:
   - fqcn-builtins
   - no-handler
   - name
+  - yaml[line-length]
 
 warn_list:
   - no-changed-when

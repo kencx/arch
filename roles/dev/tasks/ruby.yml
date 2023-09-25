@@ -1,11 +1,11 @@
 ---
 - name: Install rubocop
-  pacman:
+  community.general.pacman:
     name: rubocop
     state: present
 
 - name: Install ruby-solargraph
-  pacman:
+  community.general.pacman:
     name: ruby-solargraph
     state: present
   tags: aur
@@ -19,7 +19,7 @@
     creates: "/usr/bin/rbs"
 
 - name: Install rbenv
-  pacman:
+  community.general.pacman:
     name: rbenv
     state: present
   tags: aur

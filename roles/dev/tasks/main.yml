@@ -57,13 +57,13 @@
     state: present
 
 - name: Install minio client
-  pacman:
+  community.general.pacman:
     name: minio-client
     state: present
   tags: minio
 
 - name: Install flyctl-bin
-  pacman:
+  community.general.pacman:
     name: flyctl-bin
     state: present
   tags:

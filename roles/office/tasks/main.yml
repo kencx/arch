@@ -30,7 +30,7 @@
   tags: zathura-extras
 
 - name: Install pdfcpu
-  pacman:
+  community.general.pacman:
     name: pdfcpu
     state: present
   tags:
@@ -50,7 +50,7 @@
   tags: pcmanfm
 
 - name: Install pandoc-bin
-  pacman:
+  community.general.pacman:
     name: pandoc-bin
     state: present
   tags:

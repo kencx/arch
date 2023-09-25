@@ -1,8 +1,8 @@
 # Roles
 
 ## Tags
-- aur
 - audio
+- aur
 - bluetooth
 - disk
 - dev
@@ -13,6 +13,9 @@
 - play
 - print
 - ricing
+
+#### security
+- nftables
 
 #### networking
 - networking-tools
@@ -26,6 +29,7 @@
 - ansible-extras
 - dive
 - docker
+- fly
 - golang
 - hashicorp
 - linters
@@ -39,6 +43,7 @@
 #### office
 - libreoffice
 - obsidian
+- pandoc
 - pcmanfm
 - pdfcpu
 - xsv
@@ -46,6 +51,7 @@
 
 #### play
 - discord
+- music
 - steam
 
 #### ricing

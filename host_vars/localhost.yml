@@ -1,3 +1,4 @@
+---
 user: kenc
 password: changeme
 shell: /bin/zsh
@@ -10,3 +11,12 @@ network_routes:
     dest: "10.10.10.0/24"
 gui_video_driver: nvidia
 print_driver: brother-hl1210w
+
+ufw_rules:
+  - {rule: 'allow', port: '22000', proto: 'tcp', comment: 'syncthing'}
+  - {rule: 'allow', port: '21027', proto: 'udp', comment: 'syncthing'}
+
+aur_user: "{{ user }}"
+aur_remote_s3_repo: true
+aur_s3_endpoint: "https://minio.kencv.xyz"
+aur_remote_s3_bucket: "aur"

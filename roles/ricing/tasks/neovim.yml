@@ -10,7 +10,7 @@
     nvim --headless "+Lazy! sync" +qa
 
 - name: Pull lspcontainers images
-  docker_image:
+  community.docker.docker_image:
     name: "{{ item }}"
     source: pull
     state: present

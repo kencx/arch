@@ -37,7 +37,7 @@
     enabled: true
 
 - name: Install dive
-  pacman:
+  community.general.pacman:
     name: dive
     state: present
   tags: dive
