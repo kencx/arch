@@ -32,6 +32,7 @@
 - fly
 - golang
 - hashicorp
+- haskell
 - linters
 - minio
 - molecule

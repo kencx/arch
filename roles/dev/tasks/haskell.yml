@@ -1,0 +1,5 @@
+---
+- name: Install ghcup-hs-bin
+  pacman:
+    name: ghcup-hs-bin
+    state: present

@@ -30,6 +30,9 @@
 - import_tasks: ruby.yml
   tags: ruby
 
+- import_tasks: haskell.yml
+  tags: haskell
+
 - name: Install linters
   community.general.pacman:
     name:
