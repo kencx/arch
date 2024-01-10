@@ -57,6 +57,7 @@
       - direnv
       - sops
       - age
+      - mkcert
     state: present
 
 - name: Install minio client
