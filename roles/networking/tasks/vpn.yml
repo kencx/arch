@@ -1,0 +1,12 @@
+---
+- name: Copy Wireguard network configuration
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/systemd/network/99-{{ item }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart networking
+  with_items:
+    - wg0.netdev
+    - wg0.network

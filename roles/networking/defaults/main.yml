@@ -5,3 +5,14 @@ network_wireless_ip_addr: ""
 network_gw: ""
 network_dns: ""
 network_routes: []
+
+network_vpn_name: "wg0"
+network_vpn_port: 51820
+network_vpn_private_key: ""
+network_vpn_peer_public_key: ""
+network_vpn_peer_endpoint_ip: ""
+network_vpn_peer_endpoint_port: ""
+
+network_vpn_client_ipv4_address: ""
+network_vpn_client_ipv6_address: ""
+network_vpn_client_dns: ""

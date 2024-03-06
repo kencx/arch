@@ -1,0 +1,16 @@
+[NetDev]
+Name={{ network_vpn_name }}
+Kind=wireguard
+Description=Wireguard Mullvad tunnel
+
+[WireGuard]
+FirewallMark=0x8888
+ListenPort={{ network_vpn_port }}
+RouteTable=off
+PrivateKey={{ network_vpn_private_key }}
+
+[WireGuardPeer]
+PublicKey={{ network_vpn_peer_public_key }}
+AllowedIPs=0.0.0.0/0
+AllowedIPs=::0/0
+Endpoint={{ network_vpn_peer_endpoint_ip }}:{{ network_vpn_peer_endpoint_port }}

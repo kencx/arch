@@ -57,5 +57,8 @@
     state: link
     force: true
 
+- import_tasks: vpn.yml
+  tags: vpn
+
 - import_tasks: tools.yml
   tags: networking-tools

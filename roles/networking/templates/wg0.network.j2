@@ -1,0 +1,30 @@
+[Match]
+Name={{ network_vpn_name }}
+
+[Network]
+Address={{ network_vpn_client_ipv4_address }}
+Address={{ network_vpn_client_ipv6_address }}
+DNS={{ network_vpn_client_dns }}
+DNSDefaultRoute=yes
+Domains=~.
+
+[RoutingPolicyRule]
+Family=both
+SuppressPrefixLength=0
+Priority=999
+Table=main
+
+[RoutingPolicyRule]
+Family=both
+FirewallMark=0x8888
+InvertRule=true
+Priority=1000
+Table=1000
+
+[Route]
+Gateway=0.0.0.0
+Table=1000
+
+[Route]
+Gateway=::
+Table=1000
