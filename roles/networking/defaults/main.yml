@@ -15,4 +15,3 @@ network_vpn_peer_endpoint_port: ""
 
 network_vpn_client_ipv4_address: ""
 network_vpn_client_ipv6_address: ""
-network_vpn_client_dns: ""
