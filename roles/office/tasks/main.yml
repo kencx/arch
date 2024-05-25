@@ -31,6 +31,14 @@
     state: present
   tags: zathura-extras
 
+- name: Install papeer
+  pacman:
+    name: papeer
+    state: present
+  tags:
+    - papeer
+    - aur
+
 - name: Install pdfcpu
   community.general.pacman:
     name: pdfcpu

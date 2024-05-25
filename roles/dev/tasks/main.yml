@@ -8,6 +8,16 @@
     state: present
   tags: golang
 
+- name: Install Go tools from AUR
+  community.general.pacman:
+    name:
+      - air
+      - templ-bin
+    state: present
+  tags:
+    - golang
+    - aur
+
 - name: Install Python and tools
   community.general.pacman:
     name:

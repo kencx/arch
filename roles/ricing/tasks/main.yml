@@ -6,7 +6,6 @@
       - dunst
       - nsxiv
       - feh
-      # - picom
     state: present
 
 - name: Install Nerd Font
@@ -14,15 +13,12 @@
     name: "{{ ricing_nerd_font }}"
     state: present
 
-- name: Install zsh-pure-prompt from AUR
+- name: Install rice packages from AUR
   community.general.pacman:
-    name: zsh-pure-prompt
-    state: present
-  tags: aur
-
-- name: Install eww from AUR
-  community.general.pacman:
-    name: eww
+    name:
+      - eww
+      - pfetch
+      - zsh-pure-prompt
     state: present
   tags: aur
 

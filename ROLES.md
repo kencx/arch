@@ -46,6 +46,7 @@
 - libreoffice
 - obsidian
 - pandoc
+- papeer
 - pcmanfm
 - pdfcpu
 - xsv
@@ -53,6 +54,7 @@
 
 #### play
 - discord
+- factorio
 - music
 - steam
 

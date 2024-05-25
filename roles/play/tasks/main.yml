@@ -20,3 +20,11 @@
 
 - import_tasks: steam.yml
   tags: steam
+
+- name: Install factorio
+  pacman:
+    name: factorio
+    state: present
+  tags:
+    - aur
+    - factorio
