@@ -29,6 +29,8 @@ base_packages:
   - btop
   - bitwarden-cli
   - entr
+  - unzip
+  - zip
 
 shell: /bin/bash
 user: arch

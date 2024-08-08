@@ -6,6 +6,13 @@
       - docker-compose
       - docker-buildx
 
+- name: Install nvidia-container-toolkit
+  community.general.pacman:
+    name:
+      - nvidia-container-toolkit
+      - libnvidia-container
+  when: '"nvidia" in gui_video_driver'
+
 - name: Add user to docker group
   user:
     name: "{{ user }}"

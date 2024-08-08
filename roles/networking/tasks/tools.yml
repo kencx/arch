@@ -3,12 +3,18 @@
   community.general.pacman:
     name:
       - gping
-      - speedtest-cli
-      # - bind
+      - bind
       # - whois
       # - netcat
       # - nmap
-      # - tcpdump
+      - tcpdump
       # - wireshark
       # - inetutils
     state: present
+
+- name: Install optional networking tools
+  community.general.pacman:
+    name:
+      - speedtest-cli
+    state: present
+  tags: speedtest

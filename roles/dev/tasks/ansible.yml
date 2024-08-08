@@ -3,6 +3,7 @@
   community.general.pacman:
     name:
       - ansible-core
+      - python-passlib
     state: present
 
 - name: Install Ansible extras

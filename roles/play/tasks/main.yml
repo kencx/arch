@@ -15,6 +15,22 @@
     state: present
   tags: discord
 
+- name: Install melonds (DS emulator)
+  community.general.pacman:
+    name: melonds-bin
+    state: present
+  tags:
+    - melonds
+    - aur
+
+- name: Install factorio
+  community.general.pacman:
+    name: factorio
+    state: present
+  tags:
+    - factorio
+    - aur
+
 - import_tasks: music.yml
   tags: music
 

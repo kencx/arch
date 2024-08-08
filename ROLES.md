@@ -19,6 +19,7 @@
 
 #### networking
 - networking-tools
+- speedtest
 - vpn
 
 #### gui

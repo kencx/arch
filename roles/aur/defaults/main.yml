@@ -7,7 +7,6 @@ aur_packages:
   - aurutils
   - anki-official-binary-bundle
   - hurl-rs
-  - openbooks-bin
 aur_script_dest: "/usr/bin/aura"
 
 aur_remote_s3_repo: false
