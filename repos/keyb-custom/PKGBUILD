@@ -1,9 +1,8 @@
-# Maintainer:
-# Contributor:
+# Maintainer: kencx
 pkgname=keyb-custom
 pkgver=0.7.0
 pkgrel=1
-pkgdesc=""
+pkgdesc="Create and view custom hotkey cheatsheets in the terminal"
 arch=('x86_64')
 url="https://github.com/kencx/keyb"
 license=('MIT')
