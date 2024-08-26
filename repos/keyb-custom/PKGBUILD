@@ -1,0 +1,17 @@
+# Maintainer:
+# Contributor:
+pkgname=keyb-custom
+pkgver=0.7.0
+pkgrel=1
+pkgdesc=""
+arch=('x86_64')
+url="https://github.com/kencx/keyb"
+license=('MIT')
+provides=('keyb')
+conflicts=('keyb' 'keyb-bin' 'keyb-git')
+sha256sums_x86_64=("43117be4e46e532f2a4d9efe7d54a31730236f299887b2922876bb258586c9b1")
+source_x86_64=("keyb-${pkgver}-linux-amd64.tar.gz::https://github.com/kencx/keyb/releases/download/v${pkgver}/keyb-v${pkgver}-linux-amd64.tar.gz")
+package() {
+  install -Dm755 "./keyb" "${pkgdir}/usr/bin/keyb"
+}
+
