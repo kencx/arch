@@ -1,3 +1,4 @@
 pkglist.txt
 *.tar.gz
 *.tar.zst
+*.log
