@@ -47,11 +47,13 @@
     - pdfcpu
     - aur
 
-- name: Install Obsidian
+- name: Install Obsidian (via AUR)
   community.general.pacman:
-    name: obsidian
+    name: obsidian-bin
     state: present
-  tags: obsidian
+  tags:
+    - obsidian
+    - aur
 
 - name: Install pcmanfm file manager
   community.general.pacman:
