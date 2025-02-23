@@ -9,7 +9,7 @@ network_dns: "192.168.86.49"
 network_routes:
   - gw: "192.168.86.6"
     dest: "10.10.10.0/24"
-gui_video_driver: nvidia
+gui_video_driver: xf86-video-amdgpu
 print_driver: brother-hl1210w
 
 ufw_rules:
