@@ -48,7 +48,7 @@
     name:
       - yamllint
       - stylua
-      - luacheck
+      - selene
       - codespell
       - shfmt
     state: present
