@@ -4,6 +4,7 @@
     name:
       - bluez
       - bluez-utils
+      - bluetui
     state: present
 
 - name: Unblock the bluetooth device
