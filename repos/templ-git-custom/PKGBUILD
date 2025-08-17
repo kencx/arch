@@ -1,6 +1,6 @@
 # Maintainer: kencx
 pkgname=templ-git-custom
-pkgver=0.2.778
+pkgver=0.3.943
 pkgrel=1
 pkgdesc="A language for writing HTML user interfaces in Go."
 arch=('x86_64')
