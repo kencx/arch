@@ -38,6 +38,11 @@
     name: playerctl
     state: present
 
+- name: Install wiremix
+  community.general.pacman:
+    name: wiremix
+    state: present
+
 # - name: Install wireplumber
 #   community.general.pacman:
 #     name: wireplumber
