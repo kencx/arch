@@ -7,6 +7,16 @@
       - xterm
     state: present
 
+- name: Install wayland
+  community.general.pacman:
+    name:
+      - wayland
+      - xorg-xwayland
+      - xorg-xlsclients
+      - qt5-wayland
+      - glfw-wayland
+    state: present
+
 - import_tasks: driver.yml
   when: gui_video_driver != ""
 
