@@ -23,11 +23,10 @@
     name:
       - python
       - python-pip
-      - python-pipx
       - python-virtualenv
       - python-lsp-server
-      - flake8
-      - pyenv
+      - uv
+      - ruff
     state: present
 
 - name: Install rustup
@@ -53,6 +52,11 @@
       - shfmt
     state: present
   tags: linters
+
+- name: Install bashls
+  community.general.pacman:
+    name: bash-language-server
+    state: present
 
 - name: Install shellcheck
   community.general.pacman:
