@@ -1,6 +1,6 @@
 # Maintainer: kencx
 pkgname=templ-git-custom
-pkgver=0.3.943
+pkgver=0.3.977
 pkgrel=1
 pkgdesc="A language for writing HTML user interfaces in Go."
 arch=('x86_64')
@@ -8,7 +8,7 @@ url="https://github.com/a-h/templ"
 license=('MIT')
 provides=('templ')
 conflicts=('templ' 'templ-bin' 'templ-git')
-sha256sums_x86_64=("3f83c104fc6d170a8abba3b645a90fcc43c6e633c4435c7c7981cb62911f1e6b")
+sha256sums_x86_64=("231087561d1df2001a0176fc7dda4f0fd8ad0a8ff7b36d268389e43fa3a64073")
 source_x86_64=("templ-x86-x64-${pkgver}.tar.gz::https://github.com/a-h/templ/releases/download/v${pkgver}/templ_Linux_x86_64.tar.gz")
 package() {
   install -Dm755 "./templ" "${pkgdir}/usr/bin/templ"
